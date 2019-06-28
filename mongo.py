@@ -1,9 +1,16 @@
 import pymongo
 import os
+from flask import Flask, render_template, redirect, request, url_for
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 
-MONGODB_URI = os.getenv("MONGO_URI")
-DBS_NAME = "cookbook"
-COLLECTION_NAME = "recipes"
+app = Flask(__name__)
+app.config["MONGO_URI"] = os.getenv("MONGO_URI")
+app.config["MONGO_DBNAME"] = 'cookbook'
+
+#MONGODB_URI =   'mongodb+srv://root:31Wirpbj6677@cookery-website-xysxa.mongodb.net/cookbook?retryWrites=true&w=majority'
+#DBS_NAME = "cookbook"
+#COLLECTION_NAME = "recipes"
 
 def mongo_connect(url):
     try:
@@ -13,13 +20,13 @@ def mongo_connect(url):
     except pymongo.errors.ConnectionFailure as e:
         print("Unable to connect to MongoDB: %s") % e
        
-conn = mongo_connect(MONGODB_URI)
-coll = conn[DBS_NAME][COLLECTION_NAME]
+##conn = mongo_connect(MONGODB_URI)
+##coll = conn[DBS_NAME][COLLECTION_NAME]
 
-documents = coll.find()
+##documents = conn.find()
 
-for doc in documents:
-    print(doc)
+##for doc in documents:
+  ##  print(doc)
     
     
     
