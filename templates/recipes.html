@@ -1,0 +1,24 @@
+<html>
+    <head>
+        
+    </head>
+    
+    <body>
+        {% for recipe in recipes %}
+            {{recipe.recipe-name}}
+            {{recipe.cuisine-type}}
+            {{recipe.servings}}
+            {{recipe.prep-time}}
+            {{recipe.cook-time}}
+            {{recipe.calories-per-serve}}
+            {{recipe.difficulty}}
+            {{recipe.blurb}}
+            {{recipe.isfreezable}}
+            {{recipe.ishealthy}}
+            {{recipe.isvegan}}
+            {{recipe.isvegetarian}}
+            {{recipe.ingredients}}
+            {{recipe.method}}
+        {% endfor %}
+    </body>
+</html>
