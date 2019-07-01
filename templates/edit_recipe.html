@@ -1,0 +1,182 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3>Edit Recipe</h3>
+
+<div class="row">
+  <form action="{{ url_for('update_recipe'), recipe_id=recipes._id) }}" method="POST" class="col s12">
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">subject</i>
+        <label>Recipe Name</label>
+        <input placeholder="Recipe Name" id="recipe_name" name="recipe_name" type="text" class="validate" value="{{ recipe.recipe_name }}">
+      </div>
+      <!-- input-field -->
+    </div>
+    <!-- Row -->
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">subject</i>
+        <label>Recipe Description</label>
+        <input placeholder="Description" id="blurb" name="blurb" type="text" class="validate" value="{{ recipe.blurb }}">
+      </div>
+      <!-- input-field -->
+    </div>
+    <!-- Row -->
+
+    <div class="row">
+      <div class="input-field col s12 l6">
+        <i class="material-icons prefix">subject</i>
+        <select id="cuisine" name="cuisine" type="text">
+            <option value="" disabled selected>Choose Cuisine</option>
+            {% for cuis in cuisines%}
+              {% if cuis.name == recipe.cuisine_type %}
+                <option value="{{ cuis.name }}" selected>{{ cuis.name }}</option>
+              {% else %}
+                <option value="{{ cuis.name }}">{{ cuis.name }}</option>
+              {% endif %}
+            {% endfor %}
+        </select>
+        <label>Cuisine Type</label>
+      </div>
+      <!-- input-field -->
+
+      <div class="input-field col s12 l6">
+        <i class="material-icons prefix">subject</i>
+        <select id="principle" name="principle_ingredient" type="text">
+            <option value="" disabled selected>Choose Principle Ingredient</option>
+            
+            {% for principle in principles%}
+              {% if principle.name == recipe.principle_ingredient %}
+                <option value="{{ principle.name }}" selected>{{ principle.name }}</option>
+              {% else %}
+                <option value="{{ principle.name }}">{{ principle.name }}</option>
+              {% endif %}
+            {% endfor %}
+        </select>
+        <label>Principle ingredient</label>
+      </div>
+      <!-- input-field -->
+    </div>
+    <!-- Row -->
+
+    <div class="row">
+      <div class="input-field col l6 s12">
+        <i class="material-icons prefix">restaurant_menu</i>
+        <label>No. Of Servings</label>
+        <input placeholder="No of Servings" id="servings" name="servings" type="number" class="validate" type="number" value="{{ recipe.servings }}">
+      </div>
+      <!-- input-field -->
+      <div class="input-field col l6 s12">
+        <i class="material-icons prefix">warning</i>
+        <label>Calories Per Serving</label>
+        <input placeholder="Calories per Serving" id="calories_per_serve" name="calories_per_serve" type="number" class="validate" value="{{ recipe.calories_per_serve }}">
+      </div>
+      <!-- inpuit-field -->
+    </div>
+    <!-- Row -->
+
+    <div class="row">
+      <div class="input-field col l6 s12">
+        <i class="material-icons prefix">access_time</i>
+        <label>Preperation Time (mins)</label>
+        <input placeholder="Prep Time (mins)" id="prep_time" name="prep_time" type="number" class="validate" type="number">
+      </div>
+      <!-- input-field -->
+      <div class="input-field col l6 s12">
+        <i class="material-icons prefix">access_time</i>
+        <label>Cooking time (mins)</label>
+        <input placeholder="Cook Time (mins)" id="cook_time" name="cook_time" type="number" class="validate">
+      </div>
+      <!-- input-field -->
+    </div>
+    <!-- Row -->
+
+
+    <div class="row">
+      <div class="input-field col s4 l3 offset-s2">
+        <label>
+          <input type="checkbox" id="isfreezable" name="isfreezable" class="filled-in"/>
+          <span>Freezable</span>
+        </label>
+      </div>
+      <!-- input-field -->
+
+      <div class="input-field col s4 l3 offset-s2">
+        <label>
+          <input type="checkbox" id="ishealthy" name="ishealthy" class="filled-in"/>
+          <span>Healthy</span>
+        </label>
+      </div>
+      <!-- input-field -->
+
+      <div class="input-field col s4 l3 offset-s2">
+        <label>
+          <input type="checkbox" id="isvegetarian" name="isvegetarian" class="filled-in"/>
+          <span>Vegetarian</span>
+        </label>
+      </div>
+      <!-- input-field -->
+
+      <div class="input-field col s4 l3 offset-s2">
+        <label>
+          <input type="checkbox" id="isvegan" name="isvegan" class="filled-in"/>
+          <span>Vegan</span>
+        </label>
+      </div>
+      <!-- input-field -->
+    </div>
+    <!-- Row -->
+
+    <br>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">local_grocery_store</i>
+        <label>Ingredients</label>
+        <textarea placeholder="Ingredients" id="ingredients" name="ingredients" type="textarea" class="materialize-textarea"></textarea>
+      </div>
+      <!-- input-field -->
+    </div>
+    <!-- Row -->
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">assignment</i>
+        <label>Preperation Method</label>
+        <textarea placeholder="Method" id="method" name="method" type="textarea" class="materialize-textarea"></textarea>
+      </div>
+      <!-- input-field -->
+    </div>
+    <!-- Row -->
+
+    <div class="row">
+      <div class="input-field col s12">
+        <i class="material-icons prefix">assistant</i>
+        <select id="difficulty" name="difficulty" type="text">
+            <option value="" disabled selected>Choose Difficulty</option>
+            
+            {% for difficulty in difficulties%}
+              {% if difficulty.level == recipe.difficulty %}
+                <option value="{{ difficulty.level }}" selected>{{ difficulty.level }}</option>
+              {% else %}
+                <option value="{{ difficulty.level }}">{{ difficulty.level }}</option>
+              {% endif %}
+            {% endfor %}
+            
+          </select>
+        <label>Difficulty Level</label>
+      </div>
+      <!-- input-field -->
+    </div>
+    <!-- Row -->
+    <div class="row">
+      <button class="btn waves-effect waves-light" type="submit" name="action">Edit Recipe
+        <i class="material-icons right">playlist_add</i>
+      </button>
+    </div>
+    <!--Row-->
+  </form>
+</div>
+<!-- Row -->
+
+{% endblock %}

@@ -14,10 +14,10 @@
 
 <body>
 
-<nav class="light-blue lighten-1" role="navigation">
+  <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
+        <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
@@ -26,11 +26,9 @@
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
-  
-  {% block content %}
 
-  {% endblock %}
-  
+  {% block content %} {% endblock %}
+
   <footer class="page-footer orange">
     <div class="container">
       <div class="row">
@@ -62,7 +60,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
       </div>
     </div>
   </footer>
@@ -70,9 +68,15 @@
 
 
   <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="{{url_for('static', filename='js/jquery.js')}}"></script>
   <script type="text/javascript" src="{{url_for('static', filename='js/init.js')}}"></script>
   <script type="text/javascript" src="{{url_for('static', filename='js/materialize.min.js')}}"></script>
-  <script type="text/javascript" src="{{url_for('static', filename='js/jquery.js')}}"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('select').formSelect();
+    });
+  </script>
+
 </body>
 
 
