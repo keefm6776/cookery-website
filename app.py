@@ -41,22 +41,28 @@ def edit_recipe(recipe_id):
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
     recipes =  mongo.db.recipes
-    recipes.update( {'_id': ObjectId(recipe_id)}, 
-    {'recipe_name': request.form.get('recipe_name')},
-    {'cuisine_type': request.form.get('cuisine_type')},
-    {'servings': request.form.get('servings')},
-    {'prep_time': request.form.get('prep_time')},
-    {'cook_time': request.form.get('cook_time')},
-    {'calories_per_serve': request.form.get('calories_per_serve')},
-    {'difficulty': request.form.get('difficulty')},
-    {'blurb': request.form.get('blurb')},
-    {'isfreezable': request.form.get('isfreezable')},
-    {'ishealthy': request.form.get('ishealthy')},
-    {'isvegan': request.form.get('isvegan')},
-    {'isvegetarian': request.form.get('isvegetarian')},
-    {'ingredients': request.form.get('ingredients')},
-    {'method': request.form.get('method')},
-    {'principle_ingredient': request.form.get('principle_ingredient')})
+    recipes.update({'_id': ObjectId(recipe_id)}, 
+    {'recipe_name': request.form.get('recipe_name'),
+    'cuisine_type': request.form.get('cuisine_type'),
+    'servings': request.form.get('servings'),
+    'prep_time': request.form.get('prep_time'),
+    'cook_time': request.form.get('cook_time'),
+    'calories_per_serve': request.form.get('calories_per_serve'),
+    'difficulty': request.form.get('difficulty'),
+    'blurb': request.form.get('blurb'),
+    'isfreezable': request.form.get('isfreezable'),
+    'ishealthy': request.form.get('ishealthy'),
+    'isvegan': request.form.get('isvegan'),
+    'isvegetarian': request.form.get('isvegetarian'),
+    'ingredients': request.form.get('ingredients'),
+    'method': request.form.get('method'),
+    'principle_ingredient': request.form.get('principle_ingredient')
+    })
+    return redirect(url_for('get_recipes'))
+    
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('get_recipes'))
 
 if __name__ == '__main__':
