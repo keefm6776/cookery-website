@@ -10,6 +10,7 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:31Wirpbj6677@cookery-website-xysxa
 mongo = PyMongo(app)
 
 @app.route('/')
+
 @app.route('/get_recipes')
 def get_recipes():
     all_recipes=mongo.db.recipes.find()
@@ -36,11 +37,11 @@ def view_recipe(recipe_id):
     
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
-    this_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    the_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     all_cuisines =  mongo.db.cuisine_type.find()
     all_principles =  mongo.db.principle_ingredients.find()
     all_difficulties = mongo.db.difficulty_levels.find()
-    return render_template('edit_recipe.html', recipe=this_recipe, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
+    return render_template('edit_recipe.html', recipe=the_recipe, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
 
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
@@ -61,7 +62,6 @@ def update_recipe(recipe_id):
     'ingredients': request.form.get('ingredients'),
     'method': request.form.get('method'),
     'principle_ingredient': request.form.get('principle_ingredient'),
-    'contributor': request.form.get('contributor'),
     'image_url': request.form.get('image_url')
     })
     return redirect(url_for('get_recipes'))

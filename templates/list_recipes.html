@@ -2,24 +2,25 @@
 
 <div id="recipe-cards" class="row">
   {% for recipe in recipes %}
-  <div class="col s12 m6 l3 xl2">
-    <div class="card">
-      <div class="card-image">
-        <img src="{{url_for('static', filename='images/earth.jpg')}}" width="600" height="300">
-        <span class="card-title"><h4>{{recipe.recipe_name}}</h4></span>
-      </div>
-      <div class="card-content class-size">
-        {{ recipe.blurb }}
-      </div>
+    <div class="col s12 m6 l3 xl2">
+      <div class="card">
+        <div id = "recipe-list" class="card-image">
+            <img src="{{recipe.image_url}}" onerror="this.onerror=null;this.src='{{url_for('static', filename='images/missing_image.png')}}';" width="600" height="300"/>
+            <span class="card-title"><h4>{{recipe.recipe_name}}</h4></span>
+        </div>
+      
+        <div class="card-content class-size">
+          {{ recipe.blurb }}
+        </div>
 
-      <div class="card-action">
-        <p></p>
-        <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small green">View</a>
-        <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
-        <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
-        <p></p>
+        <div class="card-action">
+          <p></p>
+          <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small green">View</a>
+          <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+          <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
+          <p></p>
+        </div>
       </div>
-    </div>
     <!-- more display -->
   </div>
   {% endfor %} {% endblock %}
