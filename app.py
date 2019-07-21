@@ -122,6 +122,18 @@ def get_principles():
 def delete_principle(principle_id):
     mongo.db.principle_ingredients.remove({'_id': ObjectId(principle_id)})
     return redirect(url_for('get_principles'))
+    
+@app.route('/add_principle')
+def add_principle():
+    all_principles=mongo.db.principle_ingredients.find()
+    return render_template("add_principle.html", principles=all_principles)
+    
+@app.route('/insert_principle', methods=['POST'])
+def insert_principle():
+    principles = mongo.db.principle_ingredients
+    principles.insert_one(request.form.to_dict())
+    return redirect(url_for('get_principles'))
+    
 
 ######################################################################## Principle Ingredient Operations
 
@@ -134,6 +146,18 @@ def get_difficulties():
 def delete_difficulty(difficulty_id):
     mongo.db.difficulty_levels.remove({'_id': ObjectId(difficulty_id)})
     return redirect(url_for('get_difficulties'))
+
+@app.route('/add_difficulty')
+def add_difficulty():
+    all_difficulties=mongo.db.difficulty_levels.find()
+    return render_template("add_difficulty.html", difficulties=all_difficulties)
+    
+@app.route('/insert_difficulty', methods=['POST'])
+def insert_difficulty():
+    difficulties = mongo.db.difficulty_levels
+    difficulties.insert_one(request.form.to_dict())
+    return redirect(url_for('get_difficulties'))
+    
 
 #################################################################################################
 

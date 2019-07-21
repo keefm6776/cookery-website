@@ -1,5 +1,15 @@
 {% extends 'base.html' %} {% block content %}
 
+<div class="row">
+  <div class="col s9 m9 l9 xl9">
+    <h3>Difficulty Levels</h3>
+  </div>
+
+  <div class="col s3 m3 l3 xl3">
+    <a href="{{url_for('add_difficulty')}}" class="waves-effect waves-light btn btn_small green">Add</a>
+  </div>
+</div>
+
 <div id="difficulty-cards" class="row">
   {% for difficulty in difficulties %}
   <div class="col s12 m6 l3 xl2">
