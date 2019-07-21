@@ -113,21 +113,27 @@ def update_cuisine(cuisine_id):
     
 ######################################################################## Principle Ingredient Operations
 
-
 @app.route('/get_principles')
 def get_principles():
     all_principles=mongo.db.principle_ingredients.find()
-    return render_template("list_principles.html", principles=all_principles)
-
+    return render_template("manage_principles.html", principles=all_principles)
+    
+@app.route('/delete_principle/<principle_id>')
+def delete_principle(principle_id):
+    mongo.db.principle_ingredients.remove({'_id': ObjectId(principle_id)})
+    return redirect(url_for('get_principles'))
 
 ######################################################################## Principle Ingredient Operations
-
 
 @app.route('/get_difficulties')
 def get_difficulties():
     all_difficulties=mongo.db.difficulty_levels.find()
     return render_template("manage_difficulties.html", difficulties=all_difficulties)
-
+    
+@app.route('/delete_difficulty/<difficulty_id>')
+def delete_difficulty(difficulty_id):
+    mongo.db.difficulty_levels.remove({'_id': ObjectId(difficulty_id)})
+    return redirect(url_for('get_difficulties'))
 
 #################################################################################################
 
