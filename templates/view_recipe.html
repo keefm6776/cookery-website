@@ -1,7 +1,16 @@
 {% extends 'base.html' %} {% block content %}
-<h3><p>{{recipe.recipe_name}}</p></h3>
 
-<img src="{{recipe.image_url}}" alt="{{recipe.recipe_name}}">
+<div id="center-item">
+    <div id="recipe-title">
+        <h3>
+            <p>{{recipe.recipe_name}}</p>
+        </h3>
+    </div>
+
+    <div id="recipe-image">
+        <img src="{{recipe.image_url}}" alt="{{recipe.recipe_name}}">
+    </div>
+</div>
 
 <p>Contributor: {{recipe.contributor}}</p>
 <p>Cuisine: {{recipe.cuisine_type}}</p>

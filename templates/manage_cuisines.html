@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block content %}
+
+
+
+<div id="cuisine-cards" class="row">
+  {% for cuisine in cuisines %}
+  <div class="col s12 m6 l3 xl2">
+    <div class="card">
+      <div class="card-content class-size">
+        <div id="flag-image">
+          <img src="{{cuisine.flag_image}}" alt="{{cuisine.name}}" height="50" width="100">
+        </div>
+        <!-- flag-image-->
+        {{ cuisine.name }}
+      </div>
+      <!-- card-content-->
+
+      <div class="card-action">
+        <p></p>
+        <a href="{{url_for('edit_cuisine', cuisine_id=cuisine._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+        <a href="{{url_for('delete_cuisine', cuisine_id=cuisine._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
+        <p></p>
+      </div>
+      <!-- card-action-->
+
+    </div>
+    <!--grid-->
+
+  </div>
+  <!-- cuisine-cards -->
+
+  {% endfor %} {% endblock %}

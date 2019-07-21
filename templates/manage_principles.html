@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+
+<div id="principle-cards" class="row">
+  {% for principle in principles %}
+  <div class="col s12 m6 l3 xl2">
+    <div class="card">
+      <div id="principle-image" class="card-image">
+        <img src="{{principle.image_url}}" onerror="this.onerror=null;this.src='{{url_for('static', filename='images/missing_image.png')}}';" width="600" height="300" />
+      </div>
+      <!-- principle-image-->
+      
+      <div class="card-content class-size">
+        {{ principle.name }}
+      </div>
+      <!-- card-content-->
+
+      <div class="card-action">
+        <p></p>
+        <a href="{{url_for('edit_principle', principle_id=principle._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+        <a href="{{url_for('delete_principle', principle_id=principle._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
+        <p></p>
+      </div>
+      <!-- card-action-->
+    </div>
+    <!-- card -->
+  </div>
+  <!-- grid -->
+</div>
+<!-- principle-cards-->
+{% endfor %} {% endblock %}

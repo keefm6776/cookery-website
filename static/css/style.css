@@ -17,4 +17,9 @@
 
 /* User Styling */
 
+.center-item{ 
+    text-align: center;
+    background-color: red;
+}
+
 .card .card-image .card-title {border-radius: 50%;}

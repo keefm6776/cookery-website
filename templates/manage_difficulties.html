@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %}
+
+<div id="difficulty-cards" class="row">
+  {% for difficulty in difficulties %}
+  <div class="col s12 m6 l3 xl2">
+    <div class="card">
+      <div id="difficulty-image" class="card-image">
+        <img src="{{difficulty.image_url}}" onerror="this.onerror=null;this.src='{{url_for('static', filename='images/missing_image.png')}}';" width="600" height="300" />
+      </div>
+      <!-- principle-image-->
+
+      <div class="card-content class-size">
+        {{ difficulty.level }}
+      </div>
+      <!-- card-content-->
+
+      <div class="card-action">
+        <p></p>
+        <p></p>
+      </div>
+      <!-- card-action-->
+    </div>
+    <!-- grid -->
+  </div>
+  <!-- principle-cards-->
+  {% endfor %} {% endblock %}

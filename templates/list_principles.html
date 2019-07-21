@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+
+<div id="ingredient-cards" class="row">
+  {% for principle in principles %}
+  <div class="col s12 m6 l3 xl2">
+    <div class="card">
+      <div id="ingredient-list" class="card-image">
+        <img src="{{principle.image_url}}" onerror="this.onerror=null;this.src='{{url_for('static', filename='images/missing_image.png')}}';" width="600" height="300" />
+        <span class="card-title"><h4>{{principle.name}}</h4></span>
+      </div>
+
+      <div class="card-action">
+        <p></p>
+        <p></p>
+      </div>
+    </div>
+    <!-- more display -->
+  </div>
+  {% endfor %} {% endblock %}

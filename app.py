@@ -9,6 +9,8 @@ app.config["MONGO_URI"] = 'mongodb+srv://root:31Wirpbj6677@cookery-website-xysxa
 
 mongo = PyMongo(app)
 
+################################################################################### Recipe Operations
+
 @app.route('/')
 @app.route('/get_recipes')
 def get_recipes():
@@ -70,6 +72,69 @@ def update_recipe(recipe_id):
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('get_recipes'))
+
+######################################################################## Cuisine Operations
+
+    
+@app.route('/manage_cuisines')
+def manage_cuisines():
+    all_cuisines=mongo.db.cuisine_type.find()
+    return render_template("manage_cuisines.html", cuisines=all_cuisines)
+    
+@app.route('/add_cuisine')
+def add_cuisine():
+    all_cuisines=mongo.db.cuisine_type.find()
+    return render_template("add_cuisine.html", cuisines=all_cuisines)
+    
+@app.route('/edit_cuisine/<cuisine_id>')
+def edit_cuisine(cuisine_id):
+    this_cuisine =  mongo.db.recipes.find_one({"_id": ObjectId(cuisine_id)})
+    return render_template("edit_cuisine.html", cuisine=this_cuisine)
+
+@app.route('/delete_cuisine/<cuisine_id>')
+def delete_cuisine(cuisine_id):
+    mongo.db.cuisine_type.remove({'_id': ObjectId(cuisine_id)})
+    return redirect(url_for('manage_cuisines'))
+    
+@app.route('/insert_cuisine', methods=['POST'])
+def insert_cuisine():
+    cuisines = mongo.db.cuisine_type
+    cuisines.insert_one(request.form.to_dict())
+    return redirect(url_for('manage_cuisines'))
+    
+@app.route('/update_cuisine/<cuisine_id>', methods=['POST'])
+def update_cuisine(cuisine_id):
+    cuisines =  mongo.db.cuisine_type
+    cuisines.update({'_id': ObjectId(cuisine_id)}, 
+    {'name': request.form.get('name'),
+    'flag_image': request.form.get('flag_image')
+    })
+    return redirect(url_for('manage_cuisines'))
+    
+######################################################################## Principle Ingredient Operations
+
+
+@app.route('/get_principles')
+def get_principles():
+    all_principles=mongo.db.principle_ingredients.find()
+    return render_template("list_principles.html", principles=all_principles)
+
+
+######################################################################## Principle Ingredient Operations
+
+
+@app.route('/get_difficulties')
+def get_difficulties():
+    all_difficulties=mongo.db.difficulty_levels.find()
+    return render_template("manage_difficulties.html", difficulties=all_difficulties)
+
+
+#################################################################################################
+
+
+
+
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
