@@ -76,8 +76,8 @@ def delete_recipe(recipe_id):
 ######################################################################## Cuisine Operations
 
     
-@app.route('/manage_cuisines')
-def manage_cuisines():
+@app.route('/get_cuisines')
+def get_cuisines():
     all_cuisines=mongo.db.cuisine_type.find()
     return render_template("manage_cuisines.html", cuisines=all_cuisines)
     
@@ -88,19 +88,19 @@ def add_cuisine():
     
 @app.route('/edit_cuisine/<cuisine_id>')
 def edit_cuisine(cuisine_id):
-    this_cuisine =  mongo.db.cuisine_id.find_one({"_id": ObjectId(cuisine_id)})
+    this_cuisine =  mongo.db.cuisine_type.find_one({"_id": ObjectId(cuisine_id)})
     return render_template("edit_cuisine.html", cuisine=this_cuisine)
-
+    
 @app.route('/delete_cuisine/<cuisine_id>')
 def delete_cuisine(cuisine_id):
     mongo.db.cuisine_type.remove({'_id': ObjectId(cuisine_id)})
-    return redirect(url_for('manage_cuisines'))
+    return redirect(url_for('get_cuisines'))
     
 @app.route('/insert_cuisine', methods=['POST'])
 def insert_cuisine():
     cuisines = mongo.db.cuisine_type
     cuisines.insert_one(request.form.to_dict())
-    return redirect(url_for('manage_cuisines'))
+    return redirect(url_for('get_cuisines'))
     
 @app.route('/update_cuisine/<cuisine_id>', methods=['POST'])
 def update_cuisine(cuisine_id):
@@ -190,11 +190,6 @@ def update_difficulty(difficulty_id):
     
 
 #################################################################################################
-
-
-
-
-
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
