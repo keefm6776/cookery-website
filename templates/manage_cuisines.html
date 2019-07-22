@@ -17,7 +17,7 @@
     <div class="card">
       <div class="card-content class-size">
         <div id="flag-image">
-          <img src="{{cuisine.flag_image}}" alt="{{cuisine.name}}" height="50" width="100">
+            <img src="{{cuisine.flag_image}}" onerror="this.onerror=null;this.src='{{url_for('static', filename='images/missing_image.png')}}';" width="100" height="50" />
         </div>
         <!-- flag-image-->
         <h4>{{ cuisine.name }}</h4>
