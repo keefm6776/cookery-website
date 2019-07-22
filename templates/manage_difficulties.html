@@ -20,12 +20,13 @@
       <!-- principle-image-->
 
       <div class="card-content class-size">
-        {{ difficulty.level }}
+        <h4>{{ difficulty.level }}</h4>
       </div>
       <!-- card-content-->
 
       <div class="card-action">
         <p></p>
+        <a href="{{url_for('edit_difficulty', difficulty_id=difficulty._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
         <a href="{{url_for('delete_difficulty', difficulty_id=difficulty._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
         <p></p>
       </div>

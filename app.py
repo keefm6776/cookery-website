@@ -88,7 +88,7 @@ def add_cuisine():
     
 @app.route('/edit_cuisine/<cuisine_id>')
 def edit_cuisine(cuisine_id):
-    this_cuisine =  mongo.db.recipes.find_one({"_id": ObjectId(cuisine_id)})
+    this_cuisine =  mongo.db.cuisine_id.find_one({"_id": ObjectId(cuisine_id)})
     return render_template("edit_cuisine.html", cuisine=this_cuisine)
 
 @app.route('/delete_cuisine/<cuisine_id>')
@@ -109,7 +109,7 @@ def update_cuisine(cuisine_id):
     {'name': request.form.get('name'),
     'flag_image': request.form.get('flag_image')
     })
-    return redirect(url_for('manage_cuisines'))
+    return redirect(url_for('get_cuisines'))
     
 ######################################################################## Principle Ingredient Operations
 
@@ -134,6 +134,21 @@ def insert_principle():
     principles.insert_one(request.form.to_dict())
     return redirect(url_for('get_principles'))
     
+@app.route('/edit_principle/<principle_id>')
+def edit_principle(principle_id):
+    this_principle =  mongo.db.principle_ingredients.find_one({"_id": ObjectId(principle_id)})
+    return render_template('edit_principle.html', principle=this_principle)
+    
+@app.route('/update_principle/<principle_id>', methods=['POST'])
+def update_principle(principle_id):
+    principles =  mongo.db.principle_ingredients
+    principles.update({'_id': ObjectId(principle_id)}, 
+    {'name': request.form.get('name'),
+    'image_url': request.form.get('image_url')
+    })
+    return redirect(url_for('get_principles'))
+
+    
 
 ######################################################################## Principle Ingredient Operations
 
@@ -157,6 +172,21 @@ def insert_difficulty():
     difficulties = mongo.db.difficulty_levels
     difficulties.insert_one(request.form.to_dict())
     return redirect(url_for('get_difficulties'))
+    
+@app.route('/edit_difficulty/<difficulty_id>')
+def edit_difficulty(difficulty_id):
+    this_difficulty =  mongo.db.difficulty_levels.find_one({"_id": ObjectId(difficulty_id)})
+    return render_template('edit_difficulty.html', difficulty=this_difficulty)
+    
+@app.route('/update_difficulty/<difficulty_id>', methods=['POST'])
+def update_difficulty(difficulty_id):
+    difficulties =  mongo.db.difficulty_levels
+    difficulties.update({'_id': ObjectId(difficulty_id)}, 
+    {'level': request.form.get('level'),
+    'image_url': request.form.get('image_url')
+    })
+    return redirect(url_for('get_difficulties'))
+    
     
 
 #################################################################################################
