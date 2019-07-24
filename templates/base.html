@@ -14,7 +14,6 @@
 
 <body>
 
-
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="{{url_for('static', filename='images/earth.jpg')}}" class="brand-logo"></a>
       <ul class="right hide-on-med-and-down">
@@ -25,6 +24,7 @@
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
+        <li><a href="{{url_for('get_recipes')}}">List Recipes</a></li>
         <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
         <li><a href="{{url_for('get_cuisines')}}">Manage Cuisines</a></li>
         <li><a href="{{url_for('get_principles')}}">Manage Principle Ingredients</a></li>
@@ -65,8 +65,10 @@
         </div>
       </div>
     </div>
+
     <div class="footer-copyright">
       <div class="container">
+        <li><a class="white-text" href="#!">Link 1</a></li>
         Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
       </div>
     </div>
