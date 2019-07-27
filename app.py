@@ -22,7 +22,8 @@ def add_recipe():
     all_difficulties=mongo.db.difficulty_levels.find()
     all_cuisines=mongo.db.cuisine_type.find()
     all_principles=mongo.db.principle_ingredients.find()
-    return render_template("add_recipe.html", difficulties=all_difficulties, cuisines=all_cuisines, principles=all_principles)
+    all_measures=mongo.db.measures.find()
+    return render_template("add_recipe.html", difficulties=all_difficulties, cuisines=all_cuisines, principles=all_principles, measures=all_measures)
     
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
@@ -60,8 +61,46 @@ def update_recipe(recipe_id):
     'ishealthy': request.form.get('ishealthy'),
     'isvegan': request.form.get('isvegan'),
     'isvegetarian': request.form.get('isvegetarian'),
-    'ingredients': request.form.get('ingredients'),
-    'method': request.form.get('method'),
+    'ingredient1': request.form.get('ingredient1'),
+    'measure1': request.form.get('measure1'),
+    'quantity1': request.form.get('quantity1'),
+    'ingredient2': request.form.get('ingredient2'),
+    'measure2': request.form.get('measure2'),
+    'quantity2': request.form.get('quantity2'),
+    'ingredient3': request.form.get('ingredient3'),
+    'measure3': request.form.get('measure3'),
+    'quantity3': request.form.get('quantity3'),
+    'ingredient4': request.form.get('ingredient4'),
+    'measure4': request.form.get('measure4'),
+    'quantity4': request.form.get('quantity4'),
+    'ingredient5': request.form.get('ingredient5'),
+    'measure5': request.form.get('measure5'),
+    'quantity5': request.form.get('quantity5'),
+    'ingredient6': request.form.get('ingredient6'),
+    'measure6': request.form.get('measure6'),
+    'quantity6': request.form.get('quantity6'),
+    'ingredient7': request.form.get('ingredient7'),
+    'measure7': request.form.get('measure7'),
+    'quantity7': request.form.get('quantity7'),
+    'ingredient8': request.form.get('ingredient8'),
+    'measure8': request.form.get('measure8'),
+    'quantity8': request.form.get('quantity8'),
+    'ingredient9': request.form.get('ingredient9'),
+    'measure9': request.form.get('measure9'),
+    'quantity9': request.form.get('quantity9'),
+    'ingredient10': request.form.get('ingredient10'),
+    'measure10': request.form.get('measure10'),
+    'quantity10': request.form.get('quantity10'),
+    'method1': request.form.get('method1'),
+    'method2': request.form.get('method2'),
+    'method3': request.form.get('method3'),
+    'method4': request.form.get('method4'),
+    'method5': request.form.get('method5'),
+    'method6': request.form.get('method6'),
+    'method7': request.form.get('method7'),
+    'method8': request.form.get('method8'),
+    'method9': request.form.get('method9'),
+    'method10': request.form.get('method10'),
     'principle_ingredient': request.form.get('principle_ingredient'),
     'contributor': request.form.get('contributor'),
     'image_url': request.form.get('image_url')

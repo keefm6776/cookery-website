@@ -14,8 +14,10 @@
 
 <body>
 
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="{{url_for('static', filename='images/earth.jpg')}}" class="brand-logo"></a>
+  <nav class="black lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="{{url_for('static', filename='images/earth.jpg')}}" class="brand-logo"></a>
+      
       <ul class="right hide-on-med-and-down">
         <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
         <li><a href="{{url_for('get_cuisines')}}">Manage Cuisines</a></li>
@@ -36,7 +38,7 @@
 
   {% block content %} {% endblock %}
 
-  <footer class="page-footer orange">
+  <footer class="page-footer black">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
