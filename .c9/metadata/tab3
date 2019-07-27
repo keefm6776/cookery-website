@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"filter":false,"title":"[New] - Stopped","tooltip":"[New] - Stopped","undoManager":{"mark":-1,"position":-1,"stack":[]},"output":{"id":"build","width":1727,"height":47,"scrollTop":-1,"config":{"toolbar":true}},"hash":"da39a3ee5e6b4b0d3255bfef95601890afd80709"}
+=======
+{"filter":false,"title":"bash - \"ip-172-31-81-163\" ","tooltip":"bash - \"ip-172-31-81-163\" ","undoManager":{"mark":-1,"position":-1,"stack":[]},"terminal":{"id":"cloud9_terminal_167","cwd":"","width":891,"height":926,"scrollTop":-1},"timestamp":1564002976363,"hash":"da39a3ee5e6b4b0d3255bfef95601890afd80709"}
+>>>>>>> ad94dd9673a48ef2c29e4c2884058ff561502363

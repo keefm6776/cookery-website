@@ -294,9 +294,7 @@
             <div class="input-field col s2">
                 <input placeholder="Quantity 10" id="quantity10" name="quantity10" type="number" />
             </div>
-            <!-- input-field -->
         </div>
-        <!-- Row -->
 
 
         <div class="row">
@@ -388,52 +386,57 @@
                 <label>Method</label>
                 <input placeholder="Method Step 10" id="method10" name="method10" type="text" />
             </div>
-            <!-- input-field -->
         </div>
-        <!-- Row -->
 
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">assistant</i>
-                <select id="difficulty" name="difficulty" type="text">
+</div>
+
+
+<div class="row">
+
+</div>
+
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">assistant</i>
+        <select id="difficulty" name="difficulty" type="text">
             <option value="" disabled selected>Choose Difficulty</option>
             {% for level in difficulties%}
               <option value="{{ level.level }}">{{ level.level }}</option>
             {% endfor %}
         </select>
-                <label>Difficulty Level</label>
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
+        <label>Difficulty Level</label>
+    </div>
+    <!-- input-field -->
+</div>
+<!-- Row -->
 
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">email</i>
-                <label>Contributor's Email Address</label>
-                <input placeholder="Contributor's Email Address (format user@domain)" id="contributor" name="contributor" type="email" class="validate">
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">email</i>
+        <label>Contributor's Email Address</label>
+        <input placeholder="Contributor's Email Address (format user@domain)" id="contributor" name="contributor" type="email" class="validate">
+    </div>
+    <!-- input-field -->
+</div>
+<!-- Row -->
 
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">web</i>
-                <label>Image Web Address</label>
-                <input placeholder="Image URL (format http://)" id="image_url" name="image_url" type="url" class="validate">
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
+<div class="row">
+    <div class="input-field col s12">
+        <i class="material-icons prefix">web</i>
+        <label>Image Web Address</label>
+        <input placeholder="Image URL (format http://)" id="image_url" name="image_url" type="url" class="validate">
+    </div>
+    <!-- input-field -->
+</div>
+<!-- Row -->
 
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe
+<div class="row">
+    <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe
                 <i class="material-icons right">playlist_add</i>
             </button>
-        </div>
-        <!--Row-->
-    </form>
+</div>
+<!--Row-->
+</form>
 </div>
 <!-- Row -->
 
