@@ -149,7 +149,18 @@ def update_cuisine(cuisine_id):
     'flag_image': request.form.get('flag_image')
     })
     return redirect(url_for('get_cuisines'))
+
+@app.route('/filter_by_cuisine')
+def filter_by_cuisine():
+    all_cuisines=mongo.db.cuisine_type.find()
+    return render_template("filter_by_cuisine.html", cuisines=all_cuisines)
+
+@app.route('/get_cuisine_filtered_recipes')
+def get_cuisine_filtered_recipes():
+    all_recipes=mongo.db.recipes.find()
     
+    return render_template("display_by_cuisine_filter.html", recipes=all_recipes, cuisine_type=cuisine_filter)
+
 ######################################################################## Principle Ingredient Operations
 
 @app.route('/get_principles')
