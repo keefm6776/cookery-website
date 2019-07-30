@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
@@ -155,11 +155,10 @@ def filter_by_cuisine():
     all_cuisines=mongo.db.cuisine_type.find()
     return render_template("filter_by_cuisine.html", cuisines=all_cuisines)
 
-@app.route('/get_cuisine_filtered_recipes')
-def get_cuisine_filtered_recipes():
+@app.route('/get_cuisine_filtered_recipes/<cuisine_filter>', methods=['POST','GET'])
+def get_cuisine_filtered_recipes(cuisine_filter):
     all_recipes=mongo.db.recipes.find()
-    
-    return render_template("display_by_cuisine_filter.html", recipes=all_recipes, cuisine_type=cuisine_filter)
+    return render_template("display_by_cuisine_filter.html", recipes=all_recipes, cuisine_filter=cuisine_filter)
 
 ######################################################################## Principle Ingredient Operations
 

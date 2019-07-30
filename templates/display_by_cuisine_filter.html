@@ -1,11 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 
 <h1>Filter By Cuisine</h1>
-<h2>{{cuisine_filter}}</h2>
+<h2>{{ cuisine_type }}</h2>
 
 <div id="recipe-cards" class="row">
   {% for recipe in recipes %} 
-    {% if recipe.cuisine_type == 'French' %}
+    {% if recipe.cuisine_type == cuisine_type %}
+
   <div class="col s12 m6 l3 xl2">
     <div class="card">
       <div id="recipe-list" class="card-image">
@@ -27,6 +28,6 @@
     </div>
     <!-- more display -->
   </div>
-      {% endif %} 
+    {% endif %}
   {% endfor %} 
 {% endblock %}

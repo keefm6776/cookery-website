@@ -1,36 +1,30 @@
 {% extends 'base.html' %} {% block content %}
 
-<script type="text/javascript">
-    function GetSelectedText() {
-        var result = $("#cuisine_type option:selected").text();
-        alert(result);
-    return(result);
-    }
-</script>
-
 <h3>Filter By Cuisine</h3>
 
 <div class="row">
-    <form action="{{url_for('get_cuisine_filtered_recipes')}}" class="col s12">
+    <form class="col s12" method=[ 'POST']>
         <div class="input-field col s12 l6">
             <i class="material-icons prefix">subject</i>
-            <select id="cuisine_type" name="cuisine_type" type="text">
-            <option value="" disabled selected>Choose Cuisine</option>
-            {% for cuisine in cuisines %}
-                <option value="{{cuisine.name}}">{{cuisine.name}}</option>
-            {% endfor %}
-        </select>
+            <ul id="cuisine_filter">
+                {% for cuisine in cuisines %}
+                <li><a href="{{url_for('get_cuisine_filtered_recipes', cuisine_filter=cuisine.name)}}">{{ cuisine.name }}</a></li>
+                <h3>{{ cuisine.name }}</h3>
+                {% endfor %}
+            </ul>
+
+            </select>
             <label>Cuisine Type</label>
         </div>
         <!-- input-field -->
-        <input placeholder="Cuisine Name" id="name" name="name" type="text" class="validate">
+
 </div>
 
 <div class="row">
-    <button class="btn waves-effect waves-light" type="submit" onclick="GetSelectedText()" name="action">Filter By Cuisine
+    <button class="btn waves-effect waves-light" type="submit" name="action">Filter By Cuisine
                 <i class="material-icons right">filter</i>
             </button>
-    
+
     </form>
     <br/>
     <br/>
