@@ -14,8 +14,9 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/get_recipes')
 def get_recipes():
+    all_cuisines=mongo.db.cuisine_type.find()
     all_recipes=mongo.db.recipes.find()
-    return render_template("list_recipes.html", recipes=all_recipes)
+    return render_template("list_recipes.html", recipes=all_recipes, cuisines=all_cuisines)
 
 @app.route('/add_recipe')
 def add_recipe():
@@ -156,16 +157,19 @@ def filter_by_cuisine():
     return render_template("filter_by_cuisine.html", cuisines=all_cuisines)
 
 @app.route('/get_cuisine_filtered_recipes/<cuisine_filter>', methods=['POST','GET'])
+#app.route('/recipes/byCuisine/<cuisine_filter>', methods=['POST','GET'])
 def get_cuisine_filtered_recipes(cuisine_filter):
     all_recipes=mongo.db.recipes.find()
-    return render_template("display_by_cuisine_filter.html", recipes=all_recipes, cuisine_filter=cuisine_filter)
+    all_cuisines =  mongo.db.cuisine_type.find()
+    return render_template("display_by_cuisine_filter.html", recipes=all_recipes, cuisine_filter=cuisine_filter, cuisines=all_cuisines)
 
 ######################################################################## Principle Ingredient Operations
 
 @app.route('/get_principles')
 def get_principles():
     all_principles=mongo.db.principle_ingredients.find()
-    return render_template("manage_principles.html", principles=all_principles)
+    all_cuisines =  mongo.db.cuisine_type.find()
+    return render_template("manage_principles.html", principles=all_principles, cuisines=all_cuisines)
     
 @app.route('/delete_principle/<principle_id>')
 def delete_principle(principle_id):
@@ -204,7 +208,8 @@ def update_principle(principle_id):
 @app.route('/get_difficulties')
 def get_difficulties():
     all_difficulties=mongo.db.difficulty_levels.find()
-    return render_template("manage_difficulties.html", difficulties=all_difficulties)
+    all_cuisines =  mongo.db.cuisine_type.find()
+    return render_template("manage_difficulties.html", difficulties=all_difficulties, cuisines=all_cuisines)
     
 @app.route('/delete_difficulty/<difficulty_id>')
 def delete_difficulty(difficulty_id):

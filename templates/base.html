@@ -24,7 +24,7 @@
         <li><a href="{{url_for('get_cuisines')}}">Manage Cuisines</a></li>
         <li><a href="{{url_for('get_principles')}}">Manage Principle Ingredients</a></li>
         <li><a href="{{url_for('get_difficulties')}}">Manage Difficulty Levels</a></li>
-        <li><a href="{{url_for('filter_by_cuisine')}}">Filter By Cusine Type</a></li>
+       
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
@@ -33,7 +33,15 @@
         <li><a href="{{url_for('get_cuisines')}}">Manage Cuisines</a></li>
         <li><a href="{{url_for('get_principles')}}">Manage Principle Ingredients</a></li>
         <li><a href="{{url_for('get_difficulties')}}">Manage Difficulty Levels</a></li>
-        <li><a href="{{url_for('filter_by_cuisine')}}">Filter By Cuisine Type</a></li>
+        <li><a href="">Filter By Cuisine:</a>
+        {% for cuisine in cuisines %}
+                <ul>
+                  <li></li><a href="{{url_for('get_cuisine_filtered_recipes', cuisine_filter=cuisine.name)}}">{{cuisine.name}}</a></li>
+                </ul>
+        {% endfor %}
+         </li>
+       
+        
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>

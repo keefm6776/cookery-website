@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>Display Filtered By Difficulty Results</h1>
+<h4>Filtered For {{ difficulty }} Recipies</h4>
+
+<div id="recipe-cards" class="row">
+  {% for recipe in recipes %} 
+    {% if recipe.cuisine_type == cuisine_filter %}
+
+  <div class="col s12 m6 l3 xl2">
+    <div class="card">
+      <div id="recipe-list" class="card-image">
+        <img src="{{recipe.image_url}}" onerror="this.onerror=null;this.src='{{url_for('static', filename='images/missing_image.png')}}';" width="600" height="300" />
+
+      </div>
+
+      <div class="card-content class-size">
+        <span class="card-title"><h4>{{recipe.recipe_name}}</h4></span> {{ recipe.blurb }}
+      </div>
+
+      <div class="card-action">
+        <p></p>
+        <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small green">View</a>
+        <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+        <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
+        <p></p>
+      </div>
+    </div>
+    <!-- more display -->
+  </div>
+    {% endif %}
+  {% endfor %} 
+{% endblock %}
