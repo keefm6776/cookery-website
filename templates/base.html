@@ -22,11 +22,41 @@
       <li class="divider"></li>
     </ul>
 
+    <ul id='filter-cuisine-dropdown' class="dropdown-content right hide-on-med-and-down">
+      {% for cuisine in cuisines %}
+      <ul>
+        <li><a href="{{url_for('get_cuisine_filtered_recipes', cuisine_filter=cuisine.name)}}">{{cuisine.name}}</a></li>
+      </ul>
+      {% endfor %}
+      <li class="divider"></li>
+    </ul>
+
+    <ul id='filter-difficulty-dropdown' class="dropdown-content right hide-on-med-and-down">
+      {% for difficulty in difficulties %}
+      <ul>
+        </li><a href="{{url_for('get_difficulty_filtered_recipes', difficulty_filter=difficulty.level)}}">{{difficulty.level}}</a></li>
+      </ul>
+      {% endfor %}
+      <li class="divider"></li>
+    </ul>
+
+    <ul id='manage-principle-dropdown' class="dropdown-content right hide-on-med-and-down">
+      {% for ingredient in principles %}
+      <ul>
+        <li></li><a href="{{url_for('get_principle_filtered_recipes', principle_filter=ingredient.name)}}">{{ingredient.name}}</a></li>
+      </ul>
+      {% endfor %}
+      <li class="divider"></li>
+    </ul>
+
     <div class="nav-wapper">
       <ul class="right hide-on-med-and-down">
         <li><a href="{{url_for('get_recipes')}}">List All Recipes</a></li>
         <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
-        <!-- Dropdown Trigger -->
+        <!-- Dropdown Triggers -->
+        <li><a class="dropdown-trigger" href="#!" data-target="filter-cuisine-dropdown">Filter By Cuisine<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-trigger" href="#!" data-target="filter-difficulty-dropdown">Filter By Difficulty<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-trigger" href="#!" data-target="manage-principle-dropdown">Filter By Ingredient<i class="material-icons right">arrow_drop_down</i></a></li>
         <li><a class="dropdown-trigger" href="#!" data-target="manage-dropdown">Manage Lists<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
 
