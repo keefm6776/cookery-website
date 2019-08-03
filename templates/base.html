@@ -13,48 +13,51 @@
 
 </head>
 
-
 <nav class="black lighten-1" role="navigation">
   <div class="nav-wrapper container">
-    
-    <ul class="right hide-on-med-and-down">
-      <li><a href="{{url_for('get_recipes')}}">List All Recipes</a></li>
-      <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
+    <ul id='manage-dropdown' class="dropdown-content right hide-on-med-and-down">
       <li><a href="{{url_for('get_cuisines')}}">Manage Cuisines</a></li>
       <li><a href="{{url_for('get_principles')}}">Manage Principle Ingredients</a></li>
       <li><a href="{{url_for('get_difficulties')}}">Manage Difficulty Levels</a></li>
-
+      <li class="divider"></li>
     </ul>
 
-    <ul id="nav-mobile" class="sidenav">
-      <li><a href="{{url_for('get_recipes')}}">List All Recipes</a></li>
-      <li><a href="">Filter Recipes By Cuisine:</a> {% for cuisine in cuisines %}
-        <ul>
-          <li></li><a href="{{url_for('get_cuisine_filtered_recipes', cuisine_filter=cuisine.name)}}">{{cuisine.name}}</a></li>
+    <div class="nav-wapper">
+      <ul class="right hide-on-med-and-down">
+        <li><a href="{{url_for('get_recipes')}}">List All Recipes</a></li>
+        <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-trigger" href="#!" data-target="manage-dropdown">Manage Lists<i class="material-icons right">arrow_drop_down</i></a></li>
       </ul>
-      {% endfor %}
-      </li>
-      <li><a href="">Filter Recipes By Difficulty:</a> {% for difficulty in difficulties %}
-        <ul>
-          <li></li><a href="{{url_for('get_difficulty_filtered_recipes', difficulty_filter=difficulty.level)}}">{{difficulty.level}}</a></li>
-      </ul>
-      {% endfor %}
-      </li>
-      <li><a href="">Filter Recipes By Principle Ingredient:</a> {% for ingredient in principles %}
-        <ul>
-          <li></li><a href="{{url_for('get_principle_filtered_recipes', principle_filter=ingredient.name)}}">{{ingredient.name}}</a></li>
-      </ul>
-      {% endfor %}
-      </li>
 
-      <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
-      <li><a href="{{url_for('get_cuisines')}}">Manage Cuisines</a></li>
-      <li><a href="{{url_for('get_principles')}}">Manage Principle Ingredients</a></li>
-      <li><a href="{{url_for('get_difficulties')}}">Manage Difficulty Levels</a></li>
-    </ul>
-    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-  </div>
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="{{url_for('get_recipes')}}">List All Recipes</a></li>
+        <li><a href="">Filter Recipes By Cuisine:</a> {% for cuisine in cuisines %}
+          <ul>
+            <li></li><a href="{{url_for('get_cuisine_filtered_recipes', cuisine_filter=cuisine.name)}}">{{cuisine.name}}</a></li>
+        </ul>
+        {% endfor %}
+        </li>
+        <li><a href="">Filter Recipes By Difficulty:</a> {% for difficulty in difficulties %}
+          <ul>
+            <li></li><a href="{{url_for('get_difficulty_filtered_recipes', difficulty_filter=difficulty.level)}}">{{difficulty.level}}</a></li>
+        </ul>
+        {% endfor %}
+        </li>
+        <li><a href="">Filter Recipes By Principle Ingredient:</a> {% for ingredient in principles %}
+          <ul>
+            <li></li><a href="{{url_for('get_principle_filtered_recipes', principle_filter=ingredient.name)}}">{{ingredient.name}}</a></li>
+        </ul>
+        {% endfor %}
+        </li>
+        <li><a href="{{url_for('get_cuisines')}}">Manage Cuisines</a></li>
+        <li><a href="{{url_for('get_principles')}}">Manage Principle Ingredients</a></li>
+        <li><a href="{{url_for('get_difficulties')}}">Manage Difficulty Levels</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
 </nav>
+
 
 <body>
 
@@ -125,6 +128,7 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $('select').formSelect();
+    $(".dropdown-trigger").dropdown();
   });
 </script>
 
