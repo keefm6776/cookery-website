@@ -1,7 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Display Filtered By Cuisine Results</h1>
-<h4>Filtered For {{ cuisine_filter }} Recipies</h4>
+<h2>Recipes Of {{cuisine_filter}} Cuisine</h2>
 
 <div id="recipe-cards" class="row">
   {% for recipe in recipes %} 

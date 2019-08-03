@@ -1,11 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Display Filtered By Difficulty Results</h1>
-<h4>Filtered For {{ difficulty }} Recipies</h4>
+<h2>Recipes That Are Classed As {{difficulty_filter}}</h2>
 
 <div id="recipe-cards" class="row">
   {% for recipe in recipes %} 
-    {% if recipe.cuisine_type == cuisine_filter %}
+    {% if recipe.difficulty == difficulty_filter %}
 
   <div class="col s12 m6 l3 xl2">
     <div class="card">

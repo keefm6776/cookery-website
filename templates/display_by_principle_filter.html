@@ -1,11 +1,10 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Display Filtered By Cuisine Results</h1>
-<h4>Filtered For {{ cuisine_filter }} Recipies</h4>
+<h2>Recipes With {{principle_filter}} As Their Principle Ingredient</h2>
 
 <div id="recipe-cards" class="row">
   {% for recipe in recipes %} 
-    {% if recipe.cuisine_type == cuisine_filter %}
+    {% if recipe.principle_ingredient == principle_filter %}
 
   <div class="col s12 m6 l3 xl2">
     <div class="card">

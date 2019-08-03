@@ -40,6 +40,20 @@
                 </ul>
         {% endfor %}
          </li>
+          <li><a href="">Filter By Difficulty:</a>
+        {% for difficulty in difficulties %}
+                <ul>
+                  <li></li><a href="{{url_for('get_difficulty_filtered_recipes', difficulty_filter=difficulty.level)}}">{{difficulty.level}}</a></li>
+                </ul>
+        {% endfor %}
+         </li>
+          <li><a href="">Filter By Principle Ingredient:</a>
+        {% for ingredient in principles %}
+                <ul>
+                  <li></li><a href="{{url_for('get_principle_filtered_recipes', principle_filter=ingredient.name)}}">{{ingredient.name}}</a></li>
+                </ul>
+        {% endfor %}
+         </li>
        
         
       </ul>
