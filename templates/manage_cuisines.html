@@ -1,15 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="row">
-  <div class="col s9 m9 l9 xl9">
+  <div class="col s12 m12 l9 xl9">
     <h3>Cuisines</h3>
   </div>
 
-  <div class="col s3 m3 l3 xl3">
+  <div class="col s12 m12 l3 xl3">
     <a href="{{url_for('add_cuisine')}}" class="waves-effect waves-light btn btn_small green">Add</a>
   </div>
 </div>
-
 
 <div id="cuisine-cards" class="row">
   {% for cuisine in cuisines %}

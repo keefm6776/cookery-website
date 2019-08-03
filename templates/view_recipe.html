@@ -1,91 +1,99 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="row">
-    <div class="col l4 s12">
-        <div id="recipe-image">
-            <img src="{{recipe.image_url}}" alt="{{recipe.recipe_name}}">
+<header>
+    <div class="row" id="recipe-header">
+        <div class="col m3 s12">
+            <div id="recipe-image">
+                <img src="{{recipe.image_url}}" alt="{{recipe.recipe_name}}" width="200" height="200"></img>
+            </div>
+        </div>
+
+        <div class="col m9 s12">
+            <div id="recipe-title">
+                <h3>
+                    <p>{{recipe.recipe_name}}</p>
+                </h3>
+                <h5>
+                    <p>{{recipe.blurb}}</p>
+                </h5>
+                <h7>
+                    <p>(Contributed By: {{recipe.contributor}})</p>
+                </h7>
+                <div class="col m3 s12">
+                    <p><i class="material-icons prefix">local_dining</i> Servings: {{recipe.servings}}</p>
+                    <p><i class="material-icons prefix">access_time</i> Prep Time: {{recipe.prep_time}}</p>
+                    <p><i class="material-icons prefix">access_time</i> Cook Time: {{recipe.cook_time}}</p>
+                </div>
+                <div class="col m3 s12">
+                    <p><i class="material-icons prefix">pregnant_woman</i> Calories: {{recipe.calories_per_serve}}</p>
+                    <p><i class="material-icons prefix">flag</i> Cuisine: {{recipe.cuisine_type}}</p>
+                    <p><i class="material-icons prefix">thumbs_up_down</i> Difficulty: {{recipe.difficulty}}</p>
+                </div>
+
+                <div class="col m3 s12">
+                    <p>{% if recipe.isfreezable %}
+                        <img src="{{url_for('static', filename='images/tick.png')}}" alt="Tick" width="30" height="30" /> {% else %}
+                        <img src="{{url_for('static', filename='images/cross.png')}}" alt="Cross" width="30" height="30" /> {% endif %} Freezable</p>
+                    <p>{% if recipe.ishealthy %}
+                        <img src="{{url_for('static', filename='images/tick.png')}}" alt="Tick" width="30" height="30" /> {% else %}
+                        <img src="{{url_for('static', filename='images/cross.png')}}" alt="Cross" width="30" height="30" /> {% endif %} Healthy</p>
+                    <p>{% if recipe.isvegan %}
+                        <img src="{{url_for('static', filename='images/tick.png')}}" alt="Tick" width="30" height="30" /> {% else %}
+                        <img src="{{url_for('static', filename='images/cross.png')}}" alt="Cross" width="30" height="30" /> {% endif %} Vegan</p>
+                    <p> {% if recipe.isvegetarian %}
+                        <img src="{{url_for('static', filename='images/tick.png')}}" alt="Tick" width="30" height="30" /> {% else %}
+                        <img src="{{url_for('static', filename='images/cross.png')}}" alt="Cross" width="30" height="30" /> {% endif %} Vegetarian</p>
+                </div>
+
+
+            </div>
         </div>
     </div>
-
-    <div class="col l8 s12">
-        <div id="recipe-title">
-            <h3>
-                <p>{{recipe.recipe_name}}</p>
-            </h3>
-            <h5>
-                <p>{{recipe.blurb}}</p>
-            </h5>
-            <h7>
-                <p>(Contributed By: {{recipe.contributor}})</p>
-            </h7>
-            <div class="col l4 s4">
-                <p><i class="material-icons prefix">local_dining</i> Servings: {{recipe.servings}}</p>
-                <p><i class="material-icons prefix">access_time</i> Prep Time: {{recipe.prep_time}}</p>
-                <p><i class="material-icons prefix">access_time</i> Cook Time: {{recipe.cook_time}}</p>
-            </div>
-            <div class="col l4 s4">
-                <p><i class="material-icons prefix">pregnant_woman</i> Calories: {{recipe.calories_per_serve}}</p>
-                <p><i class="material-icons prefix">flag</i> Cuisine: {{recipe.cuisine_type}}</p>
-                <p><i class="material-icons prefix">thumbs_up_down</i> Difficulty: {{recipe.difficulty}}</p>
-            </div>
-
-            <div class="col l4 s4">
-                <p>{% if recipe.isfreezable %}
-                    <img src="{{url_for('static', filename='images/tick.png')}}" alt="Tick" width="30" height="30" /> {% else %}
-                    <img src="{{url_for('static', filename='images/cross.png')}}" alt="Cross" width="30" height="30" /> {% endif %}  Freezable</p>
-                <p>{% if recipe.ishealthy %}
-                    <img src="{{url_for('static', filename='images/tick.png')}}" alt="Tick" width="30" height="30" /> {% else %}
-                    <img src="{{url_for('static', filename='images/cross.png')}}" alt="Cross" width="30" height="30" /> {% endif %}  Healthy</p>
-                <p>{% if recipe.isvegan %}
-                    <img src="{{url_for('static', filename='images/tick.png')}}" alt="Tick" width="30" height="30" /> {% else %}
-                    <img src="{{url_for('static', filename='images/cross.png')}}" alt="Cross" width="30" height="30" /> {% endif %}  Vegan</p>
-                <p> {% if recipe.isvegetarian %}
-                    <img src="{{url_for('static', filename='images/tick.png')}}" alt="Tick" width="30" height="30" /> {% else %}
-                    <img src="{{url_for('static', filename='images/cross.png')}}" alt="Cross" width="30" height="30" /> {% endif %}  Vegetarian</p>
-            </div>
+</header>
 
 
-        </div>
-    </div>
-</div>
 
-<div class="row">
-    <div class="col l3 s6">
+<div class="row" id="recipe-instructions">
+    <div class="col m3 s12" id="ingredients-list">
+        <h3>Ingredients</h3>
+
+        <ul>
+            <p>
+                <li>{{recipe.quantity1}} {{recipe.measure1}} of {{recipe.ingredient1}}</li>
+            </p>
+            <p>
+                <li>{{recipe.quantity2}} {{recipe.measure2}} of {{recipe.ingredient2}}</li>
+            </p>
+            <p>
+                <li> {{recipe.quantity3}} {{recipe.measure3}} of {{recipe.ingredient3}}</li>
+            </p>
+            <p>
+                <li> {{recipe.quantity4}} {{recipe.measure4}} of {{recipe.ingredient4}}</li>
+            </p>
+            <p>
+                <li> {{recipe.quantity5}} {{recipe.measure5}} of {{recipe.ingredient5}}</li>
+            </p>
+            <p>
+                <li> {{recipe.quantity6}} {{recipe.measure6}} of {{recipe.ingredient6}}</li>
+            </p>
+            <p>
+                <li> {{recipe.quantity7}} {{recipe.measure7}} of {{recipe.ingredient7}}</li>
+            </p>
+            <p>
+                <li> {{recipe.quantity8}} {{recipe.measure8}} of {{recipe.ingredient8}}</li>
+            </p>
+            <p>
+                <li> {{recipe.quantity9}} {{recipe.measure9}} of {{recipe.ingredient9}}</li>
+            </p>
+            <p>
+                <li> {{recipe.quantity10}} {{recipe.measure10}} of {{recipe.ingredient10}}</li>
+            </p>
+        </ul>
 
     </div>
 
-    <div class="col l3 s6">
-
-    </div>
-
-    <div class="col l3 s6">
-
-    </div>
-
-    <div class="col l3 s6">
-
-    </div>
-</div>
-
-<div class="row">
-    <div class="col l4 s12">
-        <h1>Ingredients</h1>
-    
-        <p>{{recipe.quantity1}} {{recipe.measure1}} {{recipe.ingredient1}}</p>
-        <p>{{recipe.quantity2}} {{recipe.measure2}} {{recipe.ingredient2}}</p>
-        <p>{{recipe.quantity3}} {{recipe.measure3}} {{recipe.ingredient3}}</p>
-        <p>{{recipe.quantity4}} {{recipe.measure4}} {{recipe.ingredient4}}</p>
-        <p>{{recipe.quantity5}} {{recipe.measure5}} {{recipe.ingredient5}}</p>
-        <p>{{recipe.quantity6}} {{recipe.measure6}} {{recipe.ingredient6}}</p>
-        <p>{{recipe.quantity7}} {{recipe.measure7}} {{recipe.ingredient7}}</p>
-        <p>{{recipe.quantity8}} {{recipe.measure8}} {{recipe.ingredient8}}</p>
-        <p>{{recipe.quantity9}} {{recipe.measure9}} {{recipe.ingredient9}}</p>
-        <p>{{recipe.quantity10}} {{recipe.measure10}} {{recipe.ingredient10}}</p>
-
-    </div>
-
-    <div class="col l8 s12">
-        <h1>Method</h1>
+    <div class="col m9 s12" id="method-list">
+        <h3>Method</h3>
 
         <p>{{recipe.method1}}</p>
         <p>{{recipe.method2}}</p>
