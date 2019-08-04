@@ -8,7 +8,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">subject</i>
                 <label>Recipe Name</label>
-                <input placeholder="Recipe Name" id="recipe_name" name="recipe_name" type="text" class="validate" value="{{recipe.recipe_name}}">
+                <input placeholder="Recipe Name" id="recipe_name" name="recipe_name" type="text" class="validate" value="{{recipe.recipe_name}}" required>
             </div>
             <!-- input-field -->
         </div>
@@ -17,7 +17,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">subject</i>
                 <label>Description</label>
-                <input placeholder="Description" id="blurb" name="blurb" type="text" class="validate" value="{{recipe.blurb}}">
+                <input placeholder="Description" id="blurb" name="blurb" type="text" class="validate" value="{{recipe.blurb}}" required>
             </div>
             <!-- input-field -->
         </div>
@@ -26,7 +26,7 @@
         <div class="row">
             <div class="input-field col s12 l6">
                 <i class="material-icons prefix">subject</i>
-                <select id="cuisine_type" name="cuisine_type" type="text">
+                <select id="cuisine_type" name="cuisine_type" type="text" required>
             <option value="" disabled selected>Choose Cuisine</option>
             {% for cuisine in cuisines %}
                 {% if cuisine.name == recipe.cuisine_type %}
@@ -43,7 +43,7 @@
 
             <div class="input-field col s12 l6">
                 <i class="material-icons prefix">subject</i>
-                <select id="principle" name="principle_ingredient" type="text`">
+                <select id="principle" name="principle_ingredient" type="text`" required>
             <option value="" disabled selected>Choose Principle Ingredient</option>
             {% for principle in principles %}
                 {% if principle.name == recipe.principle_ingredient %}
@@ -64,13 +64,13 @@
             <div class="input-field col l6 s12">
                 <i class="material-icons prefix">restaurant_menu</i>
                 <label>Number Of Servings</label>
-                <input placeholder="No of Servings" id="servings" name="servings" type="number" class="validate" value="{{recipe.servings}}">
+                <input placeholder="No of Servings" id="servings" name="servings" type="number" class="validate" value="{{recipe.servings}}" required>
             </div>
             <!-- input-field -->
             <div class="input-field col l6 s12">
                 <i class="material-icons prefix">warning</i>
                 <label>Calories Per Serving</label>
-                <input placeholder="Calories per Serving" id="calories_per_serve" name="calories_per_serve" type="number" class="validate" value="{{recipe.calories_per_serve}}">
+                <input placeholder="Calories per Serving" id="calories_per_serve" name="calories_per_serve" type="number" class="validate" value="{{recipe.calories_per_serve}}" required>
             </div>
             <!-- inpuit-field -->
         </div>
@@ -80,13 +80,13 @@
             <div class="input-field col l6 s12">
                 <i class="material-icons prefix">access_time</i>
                 <label>Preperation Time</label>
-                <input placeholder="Prep Time (mins)" id="prep_time" name="prep_time" type="number" class="validate" value={{recipe.prep_time}}>
+                <input placeholder="Prep Time (mins)" id="prep_time" name="prep_time" type="number" class="validate" value={{recipe.prep_time}} required>
             </div>
             <!-- input-field -->
             <div class="input-field col l6 s12">
                 <i class="material-icons prefix">access_time</i>
                 <label>Cooking Time</label>
-                <input placeholder="Cook Time (mins)" id="cook_time" name="cook_time" type="number" class="validate" value="{{recipe.cook_time}}">
+                <input placeholder="Cook Time (mins)" id="cook_time" name="cook_time" type="number" class="validate" value="{{recipe.cook_time}}" required>
             </div>
             <!-- input-field -->
         </div>
@@ -149,15 +149,15 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">local_grocery_store</i>
                 <label>Ingredients</label>
-                <input placeholder="Ingredient 1" id="ingredient1" name="ingredient1" type="text" value="{{recipe.ingredient1}}"/>
+                <input placeholder="Ingredient 1" id="ingredient1" name="ingredient1" type="text" value="{{recipe.ingredient1}}" required>
             </div>
             
             <div class="input-field col s4">
-                <input placeholder="Measure 1" id="measure1" name="measure1" type="text" value="{{recipe.measure1}}"/>
+                <input placeholder="Measure 1" id="measure1" name="measure1" type="text" value="{{recipe.measure1}}" required>
             </div>
             
             <div class="input-field col s2">
-                <input placeholder="Quantity 1" id="quantity1" name="quantity1" type="number" value="{{recipe.quantity1}}"/>
+                <input placeholder="Quantity 1" id="quantity1" name="quantity1" type="number" value="{{recipe.quantity1}}" required>
             </div>
             <!-- input-field -->
         </div>
@@ -167,15 +167,15 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">local_grocery_store</i>
                 <label>Ingredients</label>
-                <input placeholder="Ingredient 2" id="ingredient2" name="ingredient2" type="text" value="{{recipe.ingredient2}}"/>
+                <input placeholder="Ingredient 2" id="ingredient2" name="ingredient2" type="text" value="{{recipe.ingredient2}}" required>
             </div>
             
             <div class="input-field col s4">
-                <input placeholder="Measure 2" id="measure2" name="measure2" type="text" value="{{recipe.measure2}}" />
+                <input placeholder="Measure 2" id="measure2" name="measure2" type="text" value="{{recipe.measure2}}" required>
             </div>
             
             <div class="input-field col s2">
-                <input placeholder="Quantity 2" id="quantity2" name="quantity2" type="number" value="{{recipe.quantity2}}" />
+                <input placeholder="Quantity 2" id="quantity2" name="quantity2" type="number" value="{{recipe.quantity2}}" required>
             </div>
             <!-- input-field -->
         </div>
@@ -185,15 +185,15 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">local_grocery_store</i>
                 <label>Ingredients</label>
-                <input placeholder="Ingredient 3" id="ingredient3" name="ingredient3" type="text" value="{{recipe.ingredient3}}"/>
+                <input placeholder="Ingredient 3" id="ingredient3" name="ingredient3" type="text" value="{{recipe.ingredient3}}" required>
             </div>
             
             <div class="input-field col s4">
-                <input placeholder="Measure 3" id="measure3" name="measure3" type="text" value="{{recipe.measure3}}" />
+                <input placeholder="Measure 3" id="measure3" name="measure3" type="text" value="{{recipe.measure3}}" required>
             </div>
             
             <div class="input-field col s2">
-                <input placeholder="Quantity 3" id="quantity3" name="quantity3" type="number" value="{{recipe.quantity3}}" />
+                <input placeholder="Quantity 3" id="quantity3" name="quantity3" type="number" value="{{recipe.quantity3}}" required>
             </div>
             <!-- input-field -->
         </div>
@@ -203,15 +203,15 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">local_grocery_store</i>
                 <label>Ingredients</label>
-                <input placeholder="Ingredient 4" id="ingredient4" name="ingredient4" type="text" value="{{recipe.ingredient4}}"/>
+                <input placeholder="Ingredient 4" id="ingredient4" name="ingredient4" type="text" value="{{recipe.ingredient4}}">
             </div>
             
             <div class="input-field col s4">
-                <input placeholder="Measure 4" id="measure4" name="measure4" type="text" value="{{recipe.measure4}}" />
+                <input placeholder="Measure 4" id="measure4" name="measure4" type="text" value="{{recipe.measure4}}">
             </div>
             
             <div class="input-field col s2">
-                <input placeholder="Quantity 4" id="quantity4" name="quantity4" type="number" value="{{recipe.quantity4}}" />
+                <input placeholder="Quantity 4" id="quantity4" name="quantity4" type="number" value="{{recipe.quantity4}}">
             </div>
             <!-- input-field -->
         </div>
@@ -221,15 +221,15 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">local_grocery_store</i>
                 <label>Ingredients</label>
-                <input placeholder="Ingredient 5" id="ingredient5" name="ingredient5" type="text" value="{{recipe.ingredient5}}"/>
+                <input placeholder="Ingredient 5" id="ingredient5" name="ingredient5" type="text" value="{{recipe.ingredient5}}">
             </div>
             
             <div class="input-field col s4">
-                <input placeholder="Measure 5" id="measure5" name="measure5" type="text"  value="{{recipe.measure5}}"/>
+                <input placeholder="Measure 5" id="measure5" name="measure5" type="text"  value="{{recipe.measure5}}">
             </div>
             
             <div class="input-field col s2">
-                <input placeholder="Quantity 5" id="quantity5" name="quantity5" type="number" value="{{recipe.quantity5}}" />
+                <input placeholder="Quantity 5" id="quantity5" name="quantity5" type="number" value="{{recipe.quantity5}}">
             </div>
             <!-- input-field -->
         </div>
@@ -239,15 +239,15 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">local_grocery_store</i>
                 <label>Ingredients</label>
-                <input placeholder="Ingredient 6" id="ingredient6" name="ingredient6" type="text" value="{{recipe.ingredient6}}"/>
+                <input placeholder="Ingredient 6" id="ingredient6" name="ingredient6" type="text" value="{{recipe.ingredient6}}">
             </div>
             
             <div class="input-field col s4">
-                <input placeholder="Measure 6" id="measure6" name="measure6" type="text"  value="{{recipe.measure6}}"/>
+                <input placeholder="Measure 6" id="measure6" name="measure6" type="text"  value="{{recipe.measure6}}">
             </div>
             
             <div class="input-field col s2">
-                <input placeholder="Quantity 6" id="quantity6" name="quantity6" type="number" value="{{recipe.quantity6}}" />
+                <input placeholder="Quantity 6" id="quantity6" name="quantity6" type="number" value="{{recipe.quantity6}}">
             </div>
             <!-- input-field -->
         </div>
@@ -257,15 +257,15 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">local_grocery_store</i>
                 <label>Ingredients</label>
-                <input placeholder="Ingredient 7" id="ingredient7" name="ingredient7" type="text" value="{{recipe.ingredient7}}"/>
+                <input placeholder="Ingredient 7" id="ingredient7" name="ingredient7" type="text" value="{{recipe.ingredient7}}">
             </div>
             
             <div class="input-field col s4">
-                <input placeholder="Measure 7" id="measure7" name="measure7" type="text"  value="{{recipe.measure7}}"/>
+                <input placeholder="Measure 7" id="measure7" name="measure7" type="text"  value="{{recipe.measure7}}">
             </div>
             
             <div class="input-field col s2">
-                <input placeholder="Quantity 7" id="quantity7" name="quantity7" type="number" value="{{recipe.quantity7}}" />
+                <input placeholder="Quantity 7" id="quantity7" name="quantity7" type="number" value="{{recipe.quantity7}}">
             </div>
             <!-- input-field -->
         </div>
@@ -275,15 +275,15 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">local_grocery_store</i>
                 <label>Ingredients</label>
-                <input placeholder="Ingredient 8" id="ingredient8" name="ingredient8" type="text" value="{{recipe.ingredient8}}"/>
+                <input placeholder="Ingredient 8" id="ingredient8" name="ingredient8" type="text" value="{{recipe.ingredient8}}">
             </div>
             
             <div class="input-field col s4">
-                <input placeholder="Measure 8" id="measure8" name="measure8" type="text"  value="{{recipe.measure8}}"/>
+                <input placeholder="Measure 8" id="measure8" name="measure8" type="text"  value="{{recipe.measure8}}">
             </div>
             
             <div class="input-field col s2">
-                <input placeholder="Quantity 8" id="quantity8" name="quantity8" type="number" value="{{recipe.quantity8}}" />
+                <input placeholder="Quantity 8" id="quantity8" name="quantity8" type="number" value="{{recipe.quantity8}}">
             </div>
             <!-- input-field -->
         </div>
@@ -293,15 +293,15 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">local_grocery_store</i>
                 <label>Ingredients</label>
-                <input placeholder="Ingredient 9" id="ingredient9" name="ingredient9" type="text" value="{{recipe.ingredient9}}"/>
+                <input placeholder="Ingredient 9" id="ingredient9" name="ingredient9" type="text" value="{{recipe.ingredient9}}">
             </div>
             
             <div class="input-field col s4">
-                <input placeholder="Measure 9" id="measure9" name="measure9" type="text"  value="{{recipe.measure9}}"/>
+                <input placeholder="Measure 9" id="measure9" name="measure9" type="text"  value="{{recipe.measure9}}">
             </div>
             
             <div class="input-field col s2">
-                <input placeholder="Quantity 9" id="quantity9" name="quantity9" type="number" value="{{recipe.quantity9}}" />
+                <input placeholder="Quantity 9" id="quantity9" name="quantity9" type="number" value="{{recipe.quantity9}}">
             </div>
             <!-- input-field -->
         </div>
@@ -311,15 +311,15 @@
             <div class="input-field col s6">
                 <i class="material-icons prefix">local_grocery_store</i>
                 <label>Ingredients</label>
-                <input placeholder="Ingredient 10" id="ingredient10" name="ingredient10" type="text" value="{{recipe.ingredient10}}"/>
+                <input placeholder="Ingredient 10" id="ingredient10" name="ingredient10" type="text" value="{{recipe.ingredient10}}">
             </div>
             
             <div class="input-field col s4">
-                <input placeholder="Measure 10" id="measure10" name="measure10" type="text"  value="{{recipe.measure10}}"/>
+                <input placeholder="Measure 10" id="measure10" name="measure10" type="text"  value="{{recipe.measure10}}">
             </div>
             
             <div class="input-field col s2">
-                <input placeholder="Quantity 10" id="quantity10" name="quantity10" type="number" value="{{recipe.quantity10}}" />
+                <input placeholder="Quantity 10" id="quantity10" name="quantity10" type="number" value="{{recipe.quantity10}}">
             </div>
             <!-- input-field -->
         </div>
@@ -330,7 +330,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
                 <label>Method</label>
-                <input placeholder="Method Step 1" id="method1" name="method1" type="text" value="{{recipe.method1}}"/>
+                <input placeholder="Method Step 1" id="method1" name="method1" type="text" value="{{recipe.method1}}" required>
             </div>
             <!-- input-field -->
         </div>
@@ -340,7 +340,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
                 <label>Method</label>
-                <input placeholder="Method Step 2" id="method2" name="method2" type="text" value="{{recipe.method2}}" />
+                <input placeholder="Method Step 2" id="method2" name="method2" type="text" value="{{recipe.method2}}" required>
             </div>
             <!-- input-field -->
         </div>
@@ -350,7 +350,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
                 <label>Method</label>
-                <input placeholder="Method Step 3" id="method3" name="method3" type="text" value="{{recipe.method3}}" />
+                <input placeholder="Method Step 3" id="method3" name="method3" type="text" value="{{recipe.method3}}" required>
             </div>
             <!-- input-field -->
         </div>
@@ -358,7 +358,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
                 <label>Method</label>
-                <input placeholder="Method Step 4" id="method4" name="method4" type="text" value="{{recipe.method4}}" />
+                <input placeholder="Method Step 4" id="method4" name="method4" type="text" value="{{recipe.method4}}">
             </div>
             <!-- input-field -->
         </div>
@@ -366,7 +366,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
                 <label>Method</label>
-                <input placeholder="Method Step 5" id="method5" name="method5" type="text" value="{{recipe.method5}}" />
+                <input placeholder="Method Step 5" id="method5" name="method5" type="text" value="{{recipe.method5}}">
             </div>
             <!-- input-field -->
         </div>
@@ -374,7 +374,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
                 <label>Method</label>
-                <input placeholder="Method Step 6" id="method6" name="method6" type="text" value="{{recipe.method6}}" />
+                <input placeholder="Method Step 6" id="method6" name="method6" type="text" value="{{recipe.method6}}">
             </div>
             <!-- input-field -->
         </div>
@@ -382,7 +382,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
                 <label>Method</label>
-                <input placeholder="Method Step 7" id="method7" name="method7" type="text" value="{{recipe.method7}}" />
+                <input placeholder="Method Step 7" id="method7" name="method7" type="text" value="{{recipe.method7}}">
             </div>
             <!-- input-field -->
         </div>
@@ -390,7 +390,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
                 <label>Method</label>
-                <input placeholder="Method Step 8" id="method8" name="method8" type="text" value="{{recipe.method8}}" />
+                <input placeholder="Method Step 8" id="method8" name="method8" type="text" value="{{recipe.method8}}">
             </div>
             <!-- input-field -->
         </div>
@@ -398,7 +398,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
                 <label>Method</label>
-                <input placeholder="Method Step 9" id="method9" name="method9" type="text" value="{{recipe.method9}}"/>
+                <input placeholder="Method Step 9" id="method9" name="method9" type="text" value="{{recipe.method9}}">
             </div>
             <!-- input-field -->
         </div>
@@ -406,7 +406,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">assignment</i>
                 <label>Method</label>
-                <input placeholder="Method Step 10" id="method10" name="method10" type="text" value="{{recipe.method10}}" />
+                <input placeholder="Method Step 10" id="method10" name="method10" type="text" value="{{recipe.method10}}">
             </div>
             <!-- input-field -->
         </div>
@@ -415,7 +415,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <i class="material-icons prefix">assistant</i>
-                <select id="difficulty" name="difficulty" type="text">
+                <select id="difficulty" name="difficulty" type="text" required>
             <option value="" disabled selected>Choose Difficulty</option>
             {% for difficulty in difficulties %}
                {% if difficulty.level == recipe.difficulty %}
@@ -436,7 +436,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">email</i>
                 <label>Contributor's Email Address</label>
-                <input placeholder="Contributor's Email Address (format user@domain)" id="contributor" name="contributor" type="email" class="validate" value="{{recipe.contributor}}">
+                <input placeholder="Contributor's Email Address (format user@domain)" id="contributor" name="contributor" type="email" class="validate" value="{{recipe.contributor}}" required>
             </div>
             <!-- input-field -->
         </div>
@@ -447,7 +447,7 @@
             <div class="input-field col s12">
                 <i class="material-icons prefix">web</i>
                 <label>Image Web Address</label>
-                <input placeholder="Image URL (format http://)" id="image_url" name="image_url" type="url" class="validate" value="{{recipe.image_url}}">
+                <input placeholder="Image URL (format http://)" id="image_url" name="image_url" type="url" class="validate" value="{{recipe.image_url}}" required>
             </div>
             <!-- input-field -->
         </div>
