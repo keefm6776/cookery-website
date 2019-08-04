@@ -19,18 +19,18 @@
                 <h7>
                     <p>(Contributed By: {{recipe.contributor}})</p>
                 </h7>
-                <div class="col m3 s12">
+                <div class="col m3 s6">
                     <p><i class="material-icons prefix">local_dining</i> Servings: {{recipe.servings}}</p>
                     <p><i class="material-icons prefix">access_time</i> Prep Time: {{recipe.prep_time}}</p>
                     <p><i class="material-icons prefix">access_time</i> Cook Time: {{recipe.cook_time}}</p>
                 </div>
-                <div class="col m3 s12">
+                <div class="col m3 s6">
                     <p><i class="material-icons prefix">pregnant_woman</i> Calories: {{recipe.calories_per_serve}}</p>
                     <p><i class="material-icons prefix">flag</i> Cuisine: {{recipe.cuisine_type}}</p>
                     <p><i class="material-icons prefix">thumbs_up_down</i> Difficulty: {{recipe.difficulty}}</p>
                 </div>
 
-                <div class="col m3 s12">
+                <div class="col m3 s6">
                     <p>{% if recipe.isfreezable %}
                         <img src="{{url_for('static', filename='images/tick.png')}}" alt="Tick" width="30" height="30" /> {% else %}
                         <img src="{{url_for('static', filename='images/cross.png')}}" alt="Cross" width="30" height="30" /> {% endif %} Freezable</p>
@@ -44,8 +44,6 @@
                         <img src="{{url_for('static', filename='images/tick.png')}}" alt="Tick" width="30" height="30" /> {% else %}
                         <img src="{{url_for('static', filename='images/cross.png')}}" alt="Cross" width="30" height="30" /> {% endif %} Vegetarian</p>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -55,57 +53,110 @@
 
 <div class="row" id="recipe-instructions">
     <div class="col m4 s12" id="ingredients-list">
-        <h3>Ingredients</h3>
 
-        <ul>
-            <p>
-                <li>{{recipe.quantity1}} {{recipe.measure1}} of {{recipe.ingredient1}}</li>
-            </p>
-            <p>
-                <li>{{recipe.quantity2}} {{recipe.measure2}} of {{recipe.ingredient2}}</li>
-            </p>
-            <p>
-                <li> {{recipe.quantity3}} {{recipe.measure3}} of {{recipe.ingredient3}}</li>
-            </p>
-            <p>
-                <li> {{recipe.quantity4}} {{recipe.measure4}} of {{recipe.ingredient4}}</li>
-            </p>
-            <p>
-                <li> {{recipe.quantity5}} {{recipe.measure5}} of {{recipe.ingredient5}}</li>
-            </p>
-            <p>
-                <li> {{recipe.quantity6}} {{recipe.measure6}} of {{recipe.ingredient6}}</li>
-            </p>
-            <p>
-                <li> {{recipe.quantity7}} {{recipe.measure7}} of {{recipe.ingredient7}}</li>
-            </p>
-            <p>
-                <li> {{recipe.quantity8}} {{recipe.measure8}} of {{recipe.ingredient8}}</li>
-            </p>
-            <p>
-                <li> {{recipe.quantity9}} {{recipe.measure9}} of {{recipe.ingredient9}}</li>
-            </p>
-            <p>
-                <li> {{recipe.quantity10}} {{recipe.measure10}} of {{recipe.ingredient10}}</li>
-            </p>
-        </ul>
+        <div class="center-item">
+            <h3>Ingredients</h3>
+        </div>
 
+        <ol>
+            <h5>
+            {% if recipe.ingredient1 %}
+            <p>
+                <li>   {{recipe.quantity1}} {{recipe.measure1}} of {{recipe.ingredient1}}</li>
+            </p>
+            {% endif %} {% if recipe.ingredient2 %}
+            <p>
+                <li>   {{recipe.quantity2}} {{recipe.measure2}} of {{recipe.ingredient2}}</li>
+            </p>
+            {% endif %} {% if recipe.ingredient3 %}
+            <p>
+                <li>   {{recipe.quantity3}} {{recipe.measure3}} of {{recipe.ingredient3}}</li>
+            </p>
+            {% endif %} {% if recipe.ingredient4 %}
+            <p>
+                <li>  {{recipe.quantity4}} {{recipe.measure4}} of {{recipe.ingredient4}}</li>
+            </p>
+            {% endif %} {% if recipe.ingredient5 %}
+            <p>
+                <li>   {{recipe.quantity5}} {{recipe.measure5}} of {{recipe.ingredient5}}</li>
+            </p>
+            {% endif %} {% if recipe.ingredient6 %}
+            <p>
+                <li>   {{recipe.quantity6}} {{recipe.measure6}} of {{recipe.ingredient6}}</li>
+            </p>
+            {% endif %} {% if recipe.ingredient7 %}
+            <p>
+                <li>   {{recipe.quantity7}} {{recipe.measure7}} of {{recipe.ingredient7}}</li>
+            </p>
+            {% endif %} {% if recipe.ingredien8 %}
+            <p>
+                <li>   {{recipe.quantity8}} {{recipe.measure8}} of {{recipe.ingredient8}}</li>
+            </p>
+            {% endif %} {% if recipe.ingredient9 %}
+            <p>
+                <li>   {{recipe.quantity9}} {{recipe.measure9}} of {{recipe.ingredient9}}</li>
+            </p>
+            {% endif %} {% if recipe.ingredient10 %}
+            <p>
+                <li>   {{recipe.quantity10}} {{recipe.measure10}} of {{recipe.ingredient10}}</li>
+            </p>
+            </h5>
+            {% endif %}
+
+        </ol>
     </div>
 
     <div class="col m8 s12" id="method-list">
-        <h3>Method</h3>
 
-        <p>{{recipe.method1}}</p>
-        <p>{{recipe.method2}}</p>
-        <p>{{recipe.method3}}</p>
-        <p>{{recipe.method4}}</p>
-        <p>{{recipe.method5}}</p>
-        <p>{{recipe.method6}}</p>
-        <p>{{recipe.method7}}</p>
-        <p>{{recipe.method8}}</p>
-        <p>{{recipe.method9}}</p>
-        <p>{{recipe.method10}}</p>
+        <div class="center-item">
+            <h3>Method</h3>
+        </div>
 
+        <ol>
+            <h5>
+                {% if recipe.method1 %}
+                <p>
+                    <li>{{recipe.method1}}</li>
+                </p>
+                {% endif %} {% if recipe.method2 %}
+                <p>
+                    <li>{{recipe.method2}}</li>
+                </p>
+                {% endif %} {% if recipe.method3 %}
+                <p>
+                    <li>{{recipe.method3}}</li>
+                </p>
+                {% endif %} {% if recipe.method4 %}
+                <p>
+                    <li>{{recipe.method4}}</li>
+                </p>
+                {% endif %} {% if recipe.method5 %}
+                <p>
+                    <li>{{recipe.method5}}</li>
+                </p>
+                {% endif %} {% if recipe.method6 %}
+                <p>
+                    <li>{{recipe.method6}}</li>
+                </p>
+                {% endif %} {% if recipe.method7 %}
+                <p>
+                    <li>{{recipe.method7}}</li>
+                </p>
+                {% endif %} {% if recipe.method8 %}
+                <p>
+                    <li>{{recipe.method8}}</li>
+                </p>
+                {% endif %} {% if recipe.method9 %}
+                <p>
+                    <li>{{recipe.method9}}</li>
+                </p>
+                {% endif %} {% if recipe.method10 %}
+                <p>
+                    <li>{{recipe.method10}}</li>
+                </p>
+                {% endif %}
+            </h5>
+        </ol>
     </div>
 </div>
 

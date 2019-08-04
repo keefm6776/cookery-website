@@ -65,40 +65,49 @@
 
       <ul id="nav-mobile" class="sidenav">
         <li><a href="{{url_for('get_recipes')}}">List All Recipes</a></li>
-        <li><a href="">Filter Recipes By Cuisine:</a> {% for cuisine in cuisines %}
+        <li><a href="">Filter Recipes By Cuisine:</a> 
+          {% for cuisine in cuisines %}
           <ul>
             <li><a href="{{url_for('get_cuisine_filtered_recipes', cuisine_filter=cuisine.name)}}">{{cuisine.name}}</a></li>
-        </ul>
-        {% endfor %}
+          </ul>
+          {% endfor %}
         </li>
-        <li><a href="">Filter Recipes By Difficulty:</a> {% for difficulty in difficulties %}
+        
+        <li><a href="">Filter Recipes By Difficulty:</a> 
+          {% for difficulty in difficulties %}
           <ul>
             <li><a href="{{url_for('get_difficulty_filtered_recipes', difficulty_filter=difficulty.level)}}">{{difficulty.level}}</a></li>
-        </ul>
-        {% endfor %}
+          </ul>
+          {% endfor %}
         </li>
-        <li><a href="">Filter Recipes By Principle Ingredient:</a> {% for ingredient in principles %}
+        
+        <li><a href="">Filter Recipes By Principle Ingredient:</a> 
+          {% for ingredient in principles %}
           <ul>
             <li><a href="{{url_for('get_principle_filtered_recipes', principle_filter=ingredient.name)}}">{{ingredient.name}}</a></li>
-        </ul>
-        {% endfor %}
+          </ul>
+          {% endfor %}
         </li>
         <li><a href="{{url_for('get_cuisines')}}">Manage Cuisines</a></li>
         <li><a href="{{url_for('get_principles')}}">Manage Principle Ingredients</a></li>
         <li><a href="{{url_for('get_difficulties')}}">Manage Difficulty Levels</a></li>
       </ul>
+      <!-- nav-mobile -->
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
+    <!-- nav-wrapper container -->
 </nav>
 
 
 <body>
 
-<!-- hero image adapted from code at https://www.w3schools.com -->
+  <!-- hero image adapted from code at https://www.w3schools.com -->
 
   <div class="hero-image">
     <div class="hero-text">
-      <p><h2><em>Global Cuisines</em></h2></p>
+      <p>
+        <h2><em>Global Cuisines</em></h2>
+      </p>
       <p>
         <h5>Keep Your Shopping Simple, With Recipes Of 10 Ingredients Or Less.</h5>
       </p>
@@ -117,9 +126,9 @@
     <div class="row">
       <div class="col l6 s12">
         <h5 class="white-text">About Us</h5>
-        <p class="grey-text text-lighten-4">We aim to make you hectic life easier.  If we can improve this site in any way, contact us on improvements@global_cuisines.com</p>
+        <p class="grey-text text-lighten-4">We aim to make you hectic life easier. If we can improve this site in any way, contact us on improvements@global_cuisines.com</p>
       </div>
-      
+
       <div class="col l3 s12">
         <h5 class="white-text">Follow Us:</h5>
         <ul>
@@ -133,7 +142,7 @@
 
   <div class="footer-copyright">
     <div class="container">
-       Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
     </div>
   </div>
 </footer>

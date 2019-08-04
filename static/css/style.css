@@ -26,22 +26,23 @@
 }
 
 #website-blurb {
-    font-size : 12px;
+    font-size: 12px;
     background-color: lightgrey;
 }
 
 /***************************************************** Navigation Styling */
 
 .sidenav {
-    background-color: #03a9f4;
-}
-
-nav ul a {
-    text-align: right;
+    background-color: grey;
 }
 
 .sidenav ul a {
-    color : white;
+    color: white;
+    text-align: right;
+}
+
+.nav ul a {
+    color: green;
 }
 
 
@@ -62,62 +63,60 @@ nav ul a {
 
 #recipe-header {
     background-color: lightgrey;
-    margin:0;
-    padding : 5px;
+    margin: 0;
+    padding: 5px;
 }
 
-#recipe-instructions{
+#recipe-instructions {
     padding: 0;
     margin: 0;
-   
+    background-color: grey;
 }
 
 #ingredients-list {
-    background-color: red;
-    margin:0;
-    padding:0;
-   
-}
-
-#ingredients-list li{
-    list-style-type: square;
+    background-color: grey;
+    margin: 0;
+    padding: 5px;
 }
 
 #method-list {
-    background-color: pink;
-    margin:0;
-    padding:0;
-    width:100%;
-    height:100%;
+    background-color: grey;
+    margin: 0;
+    padding: 5px;
 }
 
 
 /***************************************************************************Hero Styling*****/
+
 /***** Hero css adapted from code @ https://www.w3schools.com *******************************/
-body, html {
+
+body,
+html {
     height: 100%;
 }
 
 /* The hero image */
+
 .hero-image {
-   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/earth.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/earth.jpg');
 
-  /* Set a specific height */
-  height: 50%;
+    /* Set a specific height */
+    height: 50%;
 
-  /* Position and center the image to scale nicely on all screens */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
 /* Place text in the middle of the image */
+
 .hero-text {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
 }
