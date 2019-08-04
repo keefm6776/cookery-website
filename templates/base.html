@@ -43,7 +43,7 @@
     <ul id='manage-principle-dropdown' class="dropdown-content right hide-on-med-and-down">
       {% for ingredient in principles %}
       <ul>
-        <li></li><a href="{{url_for('get_principle_filtered_recipes', principle_filter=ingredient.name)}}">{{ingredient.name}}</a></li>
+        <li><a href="{{url_for('get_principle_filtered_recipes', principle_filter=ingredient.name)}}">{{ingredient.name}}</a></li>
       </ul>
       {% endfor %}
       <li class="divider"></li>

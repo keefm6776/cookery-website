@@ -18,14 +18,14 @@ def get_recipes():
     all_recipes=mongo.db.recipes.find()
     all_principles=mongo.db.principle_ingredients.find()
     all_difficulties = mongo.db.difficulty_levels.find()
-    return render_template("/display/list_recipes.html", recipes=all_recipes, manage_cuisines=all_cuisines, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
+    return render_template("/display/list_recipes.html", recipes=all_recipes,cuisines=all_cuisines, mob_cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
 
 @app.route('/add_recipe')
 def add_recipe():
     all_difficulties=mongo.db.difficulty_levels.find()
     all_cuisines=mongo.db.cuisine_type.find()
     all_principles=mongo.db.principle_ingredients.find()
-    return render_template("/add/add_recipe.html", difficulties=all_difficulties, manage_cuisines=all_cuisines, cuisines=all_cuisines, principles=all_principles)
+    return render_template("/add/add_recipe.html", difficulties=all_difficulties, cuisines=all_cuisines, principles=all_principles)
     
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
@@ -39,7 +39,7 @@ def view_recipe(recipe_id):
     all_cuisines=mongo.db.cuisine_type.find()
     all_principles=mongo.db.principle_ingredients.find()
     all_difficulties=mongo.db.difficulty_levels.find()
-    return render_template('view_recipe.html', recipe=this_recipe, manage_cuisines=all_cuisines, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
+    return render_template('view_recipe.html', recipe=this_recipe, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
     
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
@@ -47,7 +47,7 @@ def edit_recipe(recipe_id):
     all_cuisines =  mongo.db.cuisine_type.find()
     all_principles =  mongo.db.principle_ingredients.find()
     all_difficulties = mongo.db.difficulty_levels.find()
-    return render_template('/edit/edit_recipe.html', recipe=this_recipe, cuisines=all_cuisines, manage_cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
+    return render_template('/edit/edit_recipe.html', recipe=this_recipe, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
 
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])
 def update_recipe(recipe_id):
@@ -118,28 +118,28 @@ def delete_recipe(recipe_id):
 
 ######################################################################## Cuisine Operations
 
-
+    
 @app.route('/get_cuisines')
 def get_cuisines():
-    all_difficulties=list(mongo.db.difficulty_levels.find())
-    all_cuisines=list(mongo.db.cuisine_type.find())
-    all_principles=list(mongo.db.principle_ingredients.find())
+    all_difficulties=mongo.db.difficulty_levels.find()
+    all_cuisines=mongo.db.cuisine_type.find()
+    all_principles=mongo.db.principle_ingredients.find()
     return render_template("/manage/manage_cuisines.html", cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
 
 @app.route('/add_cuisine')
 def add_cuisine():
-    all_difficulties=list(mongo.db.difficulty_levels.find())
-    all_cuisines=list(mongo.db.cuisine_type.find())
-    all_principles=list(mongo.db.principle_ingredients.find())
-    return render_template("/add/add_cuisine.html", cuisines=all_cuisines, manage_cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
+    all_difficulties=mongo.db.difficulty_levels.find()
+    all_cuisines=mongo.db.cuisine_type.find()
+    all_principles=mongo.db.principle_ingredients.find()
+    return render_template("/add/add_cuisine.html", cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
     
 @app.route('/edit_cuisine/<cuisine_id>')
 def edit_cuisine(cuisine_id):
     this_cuisine =  mongo.db.cuisine_type.find_one({"_id": ObjectId(cuisine_id)})
-    all_difficulties=list(mongo.db.difficulty_levels.find())
-    all_cuisines=list(mongo.db.cuisine_type.find())
-    all_principles=list(mongo.db.principle_ingredients.find())
-    return render_template("edit/edit_cuisine.html", cuisine=this_cuisine, cuisines=all_cuisines, manage_cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
+    all_difficulties=mongo.db.difficulty_levels.find()
+    all_cuisines=mongo.db.cuisine_type.find()
+    all_principles=mongo.db.principle_ingredients.find()
+    return render_template("edit/edit_cuisine.html", cuisine=this_cuisine, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
     
 @app.route('/delete_cuisine/<cuisine_id>')
 def delete_cuisine(cuisine_id):
@@ -164,18 +164,25 @@ def update_cuisine(cuisine_id):
 @app.route('/get_cuisine_filtered_recipes/<cuisine_filter>', methods=['POST','GET'])
 def get_cuisine_filtered_recipes(cuisine_filter):
     all_recipes=mongo.db.recipes.find()
-    all_difficulties=list(mongo.db.difficulty_levels.find())
-    all_cuisines=list(mongo.db.cuisine_type.find())
-    all_principles=list(mongo.db.principle_ingredients.find())
-    return render_template("display/display_by_cuisine_filter.html", recipes=all_recipes, cuisine_filter=cuisine_filter, cuisines=all_cuisines, manage_cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
+    all_cuisines =  mongo.db.cuisine_type.find()
+    all_difficulties=mongo.db.difficulty_levels.find()
+    all_principles=mongo.db.principle_ingredients.find()
+    return render_template("display/display_by_cuisine_filter.html", recipes=all_recipes, cuisine_filter=cuisine_filter, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
 
 ######################################################################## Principle Ingredient Operations
 
+@app.route('/get_cu')
+def get_cuisines():
+    all_difficulties=mongo.db.difficulty_levels.find()
+    all_cuisines=mongo.db.cuisine_type.find()
+    all_principles=mongo.db.principle_ingredients.find()
+    return render_template("/manage/manage_cuisines.html", cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
+
 @app.route('/get_principles')
 def get_principles():
-    all_difficulties=list(mongo.db.difficulty_levels.find())
-    all_cuisines=list(mongo.db.cuisine_type.find())
-    all_principles=list(mongo.db.principle_ingredients.find())
+    all_difficulties=mongo.db.difficulty_levels.find()
+    all_cuisines=mongo.db.cuisine_type.find()
+    all_principles=mongo.db.principle_ingredients.find()
     return render_template("/manage/manage_principles.html", cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
 
 @app.route('/delete_principle/<principle_id>')
@@ -185,9 +192,9 @@ def delete_principle(principle_id):
     
 @app.route('/add_principle')
 def add_principle():
-    all_difficulties=list(mongo.db.difficulty_levels.find())
-    all_cuisines=list(mongo.db.cuisine_type.find())
-    all_principles=list(mongo.db.principle_ingredients.find())
+    all_cuisines =  mongo.db.cuisine_type.find()
+    all_difficulties=mongo.db.difficulty_levels.find()
+    all_principles=mongo.db.principle_ingredients.find()
     return render_template("add/add_principle.html", principles=all_principles, cuisines=all_cuisines, difficulties=all_difficulties)
     
 @app.route('/insert_principle', methods=['POST'])
@@ -199,9 +206,9 @@ def insert_principle():
 @app.route('/edit_principle/<principle_id>')
 def edit_principle(principle_id):
     this_principle =  mongo.db.principle_ingredients.find_one({"_id": ObjectId(principle_id)})
-    all_difficulties=list(mongo.db.difficulty_levels.find())
-    all_cuisines=list(mongo.db.cuisine_type.find())
-    all_principles=list(mongo.db.principle_ingredients.find())
+    all_principles=mongo.db.principle_ingredients.find()
+    all_cuisines =  mongo.db.cuisine_type.find()
+    all_difficulties=mongo.db.difficulty_levels.find()
     return render_template('edit/edit_principle.html', principle=this_principle, principles=all_principles, cuisines=all_cuisines, difficulties=all_difficulties)
     
 @app.route('/update_principle/<principle_id>', methods=['POST'])
@@ -216,9 +223,9 @@ def update_principle(principle_id):
 @app.route('/get_principle_filtered_recipes/<principle_filter>', methods=['POST','GET'])
 def get_principle_filtered_recipes(principle_filter):
     all_recipes=mongo.db.recipes.find()
-    all_difficulties=list(mongo.db.difficulty_levels.find())
-    all_cuisines=list(mongo.db.cuisine_type.find())
-    all_principles=list(mongo.db.principle_ingredients.find())
+    all_cuisines =  mongo.db.cuisine_type.find()
+    all_principles = mongo.db.principle_ingredients.find()
+    all_difficulties=mongo.db.difficulty_levels.find()
     return render_template("display/display_by_principle_filter.html", recipes=all_recipes, principle_filter=principle_filter, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
 
 
@@ -226,9 +233,9 @@ def get_principle_filtered_recipes(principle_filter):
 
 @app.route('/get_difficulties')
 def get_difficulties():
-    all_difficulties=list(mongo.db.difficulty_levels.find())
-    all_cuisines=list(mongo.db.cuisine_type.find())
-    all_principles=list(mongo.db.principle_ingredients.find())
+    all_principles=mongo.db.principle_ingredients.find()
+    all_cuisines =  mongo.db.cuisine_type.find()
+    all_difficulties=mongo.db.difficulty_levels.find()
     return render_template("manage/manage_difficulties.html", difficulties=all_difficulties, cuisines=all_cuisines, principles=all_principles)
     
 @app.route('/delete_difficulty/<difficulty_id>')
@@ -238,9 +245,9 @@ def delete_difficulty(difficulty_id):
 
 @app.route('/add_difficulty')
 def add_difficulty():
-    all_difficulties=list(mongo.db.difficulty_levels.find())
-    all_cuisines=list(mongo.db.cuisine_type.find())
-    all_principles=list(mongo.db.principle_ingredients.find())
+    all_difficulties=mongo.db.difficulty_levels.find()
+    all_principles=mongo.db.principle_ingredients.find()
+    all_cuisines =  mongo.db.cuisine_type.find()
     return render_template("add/add_difficulty.html", difficulties=all_difficulties, principles=all_principles, cuisines=all_cuisines)
     
 @app.route('/insert_difficulty', methods=['POST'])
@@ -252,9 +259,9 @@ def insert_difficulty():
 @app.route('/edit_difficulty/<difficulty_id>')
 def edit_difficulty(difficulty_id):
     this_difficulty =  mongo.db.difficulty_levels.find_one({"_id": ObjectId(difficulty_id)})
-    all_difficulties=list(mongo.db.difficulty_levels.find())
-    all_cuisines=list(mongo.db.cuisine_type.find())
-    all_principles=list(mongo.db.principle_ingredients.find())
+    all_principles=mongo.db.principle_ingredients.find()
+    all_cuisines =  mongo.db.cuisine_type.find()
+    all_difficulties=mongo.db.difficulty_levels.find()
     return render_template('edit/edit_difficulty.html', difficulty=this_difficulty, principles=all_principles, cuisines=all_cuisines, difficulties=all_difficulties)
     
 @app.route('/update_difficulty/<difficulty_id>', methods=['POST'])
@@ -269,9 +276,9 @@ def update_difficulty(difficulty_id):
 @app.route('/get_difficulty_filtered_recipes/<difficulty_filter>', methods=['POST','GET'])
 def get_difficulty_filtered_recipes(difficulty_filter):
     all_recipes=mongo.db.recipes.find()
-    all_difficulties=list(mongo.db.difficulty_levels.find())
-    all_cuisines=list(mongo.db.cuisine_type.find())
-    all_principles=list(mongo.db.principle_ingredients.find())
+    all_cuisines =  mongo.db.cuisine_type.find()
+    all_principles = mongo.db.principle_ingredients.find()
+    all_difficulties=mongo.db.difficulty_levels.find()
     return render_template("display/display_by_difficulty_filter.html", recipes=all_recipes, difficulty_filter=difficulty_filter, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
     
 
