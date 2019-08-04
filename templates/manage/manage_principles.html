@@ -5,6 +5,9 @@
     <h3>Principle Ingredients       <a href="{{url_for('add_principle')}}" class="waves-effect waves-light btn btn_small green">Add</a></h3>
   </div>
 </div>
+<!-- Row -->
+
+<!-- card effect adapted from code at https://www.w3schools.com -->
 
 <div id="ingredient-cards" class="row">
   {% for principle in principles %}
@@ -12,12 +15,13 @@
     <div class="card">
       <div id="recipe-list" class="card-image">
         <img src="{{principle.image_url}}" onerror="this.onerror=null;this.src='{{url_for('static', filename='images/missing_image.png')}}';" width="600" height="300" />
-
       </div>
+      <!-- recipe-list-->
 
       <div class="card-content class-size">
         <span class="card-title"><h4>{{principle._name}}</h4></span>
       </div>
+      <!-- card-content -->
 
       <div class="card-action">
         <p></p>
@@ -25,7 +29,9 @@
         <a href="{{url_for('delete_principle', principle_id=principle._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
         <p></p>
       </div>
+      <!-- card-action-->
     </div>
-    <!-- more display -->
+    <!-- card -->
   </div>
+  <!-- grid -->
   {% endfor %} {% endblock %}

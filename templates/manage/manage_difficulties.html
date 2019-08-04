@@ -1,10 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 
+<!-- card effect adapted from code at https://www.w3schools.com -->
+
 <div class="row">
   <div>
     <h3>Difficulty Levels <a href="{{url_for('add_difficulty')}}" class="waves-effect waves-light btn btn_small green">Add</a></h3>
   </div>
 </div>
+<!-- Row -->
 
 <div id="difficulty-cards" class="row">
   {% for difficulty in difficulties %}

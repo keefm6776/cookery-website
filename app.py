@@ -14,17 +14,17 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/get_recipes')
 def get_recipes():
-    all_cuisines=mongo.db.cuisine_type.find()
-    all_recipes=mongo.db.recipes.find()
-    all_principles=mongo.db.principle_ingredients.find()
-    all_difficulties = mongo.db.difficulty_levels.find()
+    all_cuisines=list(mongo.db.cuisine_type.find())
+    all_recipes=list(mongo.db.recipes.find())
+    all_principles=list(mongo.db.principle_ingredients.find())
+    all_difficulties = list(mongo.db.difficulty_levels.find())
     return render_template("/display/list_recipes.html", recipes=all_recipes, manage_cuisines=all_cuisines, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
 
 @app.route('/add_recipe')
 def add_recipe():
-    all_difficulties=mongo.db.difficulty_levels.find()
-    all_cuisines=mongo.db.cuisine_type.find()
-    all_principles=mongo.db.principle_ingredients.find()
+    all_difficulties=list(mongo.db.difficulty_levels.find())
+    all_cuisines=list(mongo.db.cuisine_type.find())
+    all_principles=list(mongo.db.principle_ingredients.find())
     return render_template("/add/add_recipe.html", difficulties=all_difficulties, manage_cuisines=all_cuisines, cuisines=all_cuisines, principles=all_principles)
     
 @app.route('/insert_recipe', methods=['POST'])
@@ -36,17 +36,17 @@ def insert_recipe():
 @app.route('/view_recipe/<recipe_id>')
 def view_recipe(recipe_id):
     this_recipe=mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    all_cuisines=mongo.db.cuisine_type.find()
-    all_principles=mongo.db.principle_ingredients.find()
-    all_difficulties=mongo.db.difficulty_levels.find()
+    all_cuisines=list(mongo.db.cuisine_type.find())
+    all_principles=list(mongo.db.principle_ingredients.find())
+    all_difficulties=list(mongo.db.difficulty_levels.find())
     return render_template('view_recipe.html', recipe=this_recipe, manage_cuisines=all_cuisines, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
     
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     this_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    all_cuisines =  mongo.db.cuisine_type.find()
-    all_principles =  mongo.db.principle_ingredients.find()
-    all_difficulties = mongo.db.difficulty_levels.find()
+    all_cuisines =  list(mongo.db.cuisine_type.find())
+    all_principles =  list(mongo.db.principle_ingredients.find())
+    all_difficulties = list(mongo.db.difficulty_levels.find())
     return render_template('/edit/edit_recipe.html', recipe=this_recipe, cuisines=all_cuisines, manage_cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
 
 @app.route('/update_recipe/<recipe_id>', methods=['POST'])

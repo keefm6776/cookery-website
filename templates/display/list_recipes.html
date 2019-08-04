@@ -2,18 +2,21 @@
 
 <h2>All Recipes Available</h2>
 
+<!-- card effect adapted from code at https://www.w3schools.com -->
+
 <div id="recipe-cards" class="row">
   {% for recipe in recipes %}
   <div class="col s12 m6 l3 xl2">
     <div class="card">
       <div id="recipe-list" class="card-image">
         <img src="{{recipe.image_url}}" onerror="this.onerror=null;this.src='{{url_for('static', filename='images/missing_image.png')}}';" width="600" height="300" />
-
       </div>
+      <!-- card -->
 
       <div class="card-content class-size">
         <span class="card-title"><h4>{{recipe.recipe_name}}</h4></span> {{ recipe.blurb }}
       </div>
+      <!-- card-content -->
 
       <div class="card-action">
         <p></p>
@@ -22,7 +25,9 @@
         <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
         <p></p>
       </div>
+      <!-- card-action-->
     </div>
-    <!-- more display -->
+    <!--card-->
   </div>
+  <!-- grid -->
   {% endfor %} {% endblock %}

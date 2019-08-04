@@ -89,15 +89,14 @@ nav ul a {
 
 
 /***************************************************************************Hero Styling*****/
-
+/***** Hero css adapted from code @ https://www.w3schools.com *******************************/
 body, html {
     height: 100%;
 }
 
 /* The hero image */
 .hero-image {
-  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/earth.jpg');
+   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/earth.jpg');
 
   /* Set a specific height */
   height: 50%;
