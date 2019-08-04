@@ -40,6 +40,10 @@ nav ul a {
     text-align: right;
 }
 
+.sidenav ul a {
+    color : white;
+}
+
 
 /**************************************************View Recipe Styling */
 
