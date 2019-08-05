@@ -85,6 +85,12 @@
     padding: 5px;
 }
 
+#view-recipe-controls{
+    padding: 5px;
+    background-color: lightgrey;
+}
+
+
 
 /***************************************************************************Hero Styling*****/
 
@@ -120,3 +126,4 @@ html {
     transform: translate(-50%, -50%);
     color: white;
 }
+

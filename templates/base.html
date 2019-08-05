@@ -65,6 +65,7 @@
 
       <ul id="nav-mobile" class="sidenav">
         <li><a href="{{url_for('get_recipes')}}">List All Recipes</a></li>
+        <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
         <li><a href="">Filter Recipes By Cuisine:</a> 
           {% for cuisine in cuisines %}
           <ul>
@@ -106,7 +107,7 @@
   <div class="hero-image">
     <div class="hero-text">
       <p>
-        <h2><em>Global Cuisines</em></h2>
+        <h3><em>Global Cuisines</em></h3>
       </p>
       <p>
         <h5>Keep Your Shopping Simple, With Recipes Of 10 Ingredients Or Less.</h5>

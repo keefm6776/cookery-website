@@ -60,46 +60,46 @@
 
         <ol>
             <h5>
-            {% if recipe.ingredient1 %}
-            <p>
-                <li>   {{recipe.quantity1}} {{recipe.measure1}} of {{recipe.ingredient1}}</li>
-            </p>
-            {% endif %} {% if recipe.ingredient2 %}
-            <p>
-                <li>   {{recipe.quantity2}} {{recipe.measure2}} of {{recipe.ingredient2}}</li>
-            </p>
-            {% endif %} {% if recipe.ingredient3 %}
-            <p>
-                <li>   {{recipe.quantity3}} {{recipe.measure3}} of {{recipe.ingredient3}}</li>
-            </p>
-            {% endif %} {% if recipe.ingredient4 %}
-            <p>
-                <li>  {{recipe.quantity4}} {{recipe.measure4}} of {{recipe.ingredient4}}</li>
-            </p>
-            {% endif %} {% if recipe.ingredient5 %}
-            <p>
-                <li>   {{recipe.quantity5}} {{recipe.measure5}} of {{recipe.ingredient5}}</li>
-            </p>
-            {% endif %} {% if recipe.ingredient6 %}
-            <p>
-                <li>   {{recipe.quantity6}} {{recipe.measure6}} of {{recipe.ingredient6}}</li>
-            </p>
-            {% endif %} {% if recipe.ingredient7 %}
-            <p>
-                <li>   {{recipe.quantity7}} {{recipe.measure7}} of {{recipe.ingredient7}}</li>
-            </p>
-            {% endif %} {% if recipe.ingredien8 %}
-            <p>
-                <li>   {{recipe.quantity8}} {{recipe.measure8}} of {{recipe.ingredient8}}</li>
-            </p>
-            {% endif %} {% if recipe.ingredient9 %}
-            <p>
-                <li>   {{recipe.quantity9}} {{recipe.measure9}} of {{recipe.ingredient9}}</li>
-            </p>
-            {% endif %} {% if recipe.ingredient10 %}
-            <p>
-                <li>   {{recipe.quantity10}} {{recipe.measure10}} of {{recipe.ingredient10}}</li>
-            </p>
+                {% if recipe.ingredient1 %}
+                <p>
+                    <li> {{recipe.quantity1}} {{recipe.measure1}} of {{recipe.ingredient1}}</li>
+                </p>
+                {% endif %} {% if recipe.ingredient2 %}
+                <p>
+                    <li> {{recipe.quantity2}} {{recipe.measure2}} of {{recipe.ingredient2}}</li>
+                </p>
+                {% endif %} {% if recipe.ingredient3 %}
+                <p>
+                    <li> {{recipe.quantity3}} {{recipe.measure3}} of {{recipe.ingredient3}}</li>
+                </p>
+                {% endif %} {% if recipe.ingredient4 %}
+                <p>
+                    <li> {{recipe.quantity4}} {{recipe.measure4}} of {{recipe.ingredient4}}</li>
+                </p>
+                {% endif %} {% if recipe.ingredient5 %}
+                <p>
+                    <li> {{recipe.quantity5}} {{recipe.measure5}} of {{recipe.ingredient5}}</li>
+                </p>
+                {% endif %} {% if recipe.ingredient6 %}
+                <p>
+                    <li> {{recipe.quantity6}} {{recipe.measure6}} of {{recipe.ingredient6}}</li>
+                </p>
+                {% endif %} {% if recipe.ingredient7 %}
+                <p>
+                    <li> {{recipe.quantity7}} {{recipe.measure7}} of {{recipe.ingredient7}}</li>
+                </p>
+                {% endif %} {% if recipe.ingredien8 %}
+                <p>
+                    <li> {{recipe.quantity8}} {{recipe.measure8}} of {{recipe.ingredient8}}</li>
+                </p>
+                {% endif %} {% if recipe.ingredient9 %}
+                <p>
+                    <li> {{recipe.quantity9}} {{recipe.measure9}} of {{recipe.ingredient9}}</li>
+                </p>
+                {% endif %} {% if recipe.ingredient10 %}
+                <p>
+                    <li> {{recipe.quantity10}} {{recipe.measure10}} of {{recipe.ingredient10}}</li>
+                </p>
             </h5>
             {% endif %}
 
@@ -157,6 +157,11 @@
                 {% endif %}
             </h5>
         </ol>
+    </div>
+    <div id="view-recipe-controls">
+        <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+        <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
+        <a type="button" onclick="window.history.back()" class="waves-effect waves-light btn btn_small darkgrey"><i class="material-icons prefix">exit_to_app</i></a>
     </div>
 </div>
 

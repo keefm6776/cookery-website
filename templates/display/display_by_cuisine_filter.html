@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 
-<h2>Recipes Of {{cuisine_filter}} Cuisine</h2>
+<h3>{{cuisine_filter}} Recipes <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn btn_small green">Add</a></h3>
 
 <!-- card effect adapted from code at https://www.w3schools.com -->
 
