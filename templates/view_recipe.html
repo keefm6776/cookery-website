@@ -6,7 +6,9 @@
             <div id="recipe-image">
                 <img src="{{recipe.image_url}}" alt="{{recipe.recipe_name}}" width="200" height="200"></img>
             </div>
+            <!--recipe-image-->
         </div>
+        <!-- recipe-header-->
 
         <div class="col m8 s12">
             <div id="recipe-title">
@@ -24,11 +26,13 @@
                     <p><i class="material-icons prefix">access_time</i> Prep Time: {{recipe.prep_time}}</p>
                     <p><i class="material-icons prefix">access_time</i> Cook Time: {{recipe.cook_time}}</p>
                 </div>
+                <!-- inner grid1 -->
                 <div class="col m3 s6">
                     <p><i class="material-icons prefix">pregnant_woman</i> Calories: {{recipe.calories_per_serve}}</p>
                     <p><i class="material-icons prefix">flag</i> Cuisine: {{recipe.cuisine_type}}</p>
                     <p><i class="material-icons prefix">thumbs_up_down</i> Difficulty: {{recipe.difficulty}}</p>
                 </div>
+                <!-- inner grid2 -->
 
                 <div class="col m3 s6">
                     <p>{% if recipe.isfreezable %}
@@ -44,9 +48,13 @@
                         <img src="{{url_for('static', filename='images/tick.png')}}" alt="Tick" width="30" height="30" /> {% else %}
                         <img src="{{url_for('static', filename='images/cross.png')}}" alt="Cross" width="30" height="30" /> {% endif %} Vegetarian</p>
                 </div>
+                <!--inner grid3-->
             </div>
+            <!-- recipe-title -->
         </div>
+        <!-- main-grid -->
     </div>
+    <!-- recipe-header -->
 </header>
 
 
@@ -158,11 +166,15 @@
             </h5>
         </ol>
     </div>
-    <div id="view-recipe-controls">
-        <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
-        <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
-        <a type="button" onclick="window.history.back()" class="waves-effect waves-light btn btn_small darkgrey"><i class="material-icons prefix">exit_to_app</i></a>
+    <div id="button-wrapper">
+        <div id="view-recipe-controls" class="left">
+            <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+            <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
+            <a type="button" onclick="window.history.back()" class="waves-effect waves-light btn btn_small darkgrey"><i class="material-icons prefix">exit_to_app</i></a>
+        </div>
+
     </div>
+    <!-- button-wrapper-->
 </div>
 
 {% endblock %}
