@@ -168,7 +168,9 @@ def get_cuisine_filtered_recipes(cuisine_filter):
     all_difficulties=list(mongo.db.difficulty_levels.find())
     all_cuisines=list(mongo.db.cuisine_type.find())
     all_principles=list(mongo.db.principle_ingredients.find())
-    return render_template("display/display_by_cuisine_filter.html", recipes=all_recipes, cuisine_filter=cuisine_filter, cuisines=all_cuisines, manage_cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
+    filtered_recipes=filter(lambda x:x['cuisine_type']==cuisine_filter, all_recipes)
+    length_filtered_recipes=len(list(filtered_recipes))
+    return render_template("display/display_by_cuisine_filter.html", length_filtered_recipes, recipes=filtered_recipes, cuisine_filter=cuisine_filter, cuisines=all_cuisines, manage_cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
 
 ######################################################################## Principle Ingredient Operations
 

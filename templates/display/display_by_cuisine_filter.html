@@ -1,13 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
-<h4>{{cuisine_filter}} Recipes <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn btn_small green">Add</a></h4>
+
+<h4>{{length_filtered_recipes}}{{cuisine_filter}} Recipes Found <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn btn_small green">Add</a></h4>
+
 
 <!-- card effect adapted from code at https://www.w3schools.com -->
 
 <div id="recipe-cards" class="row">
-  {% for recipe in recipes %} {% if recipe.cuisine_type == cuisine_filter %}
-
-
+  {% for recipe in recipes %} 
+  
   <div class="col s12 m6 l3 xl2">
     <div class="card">
       <div id="recipe-list" class="card-image">
@@ -33,4 +34,5 @@
     <!-- card -->
   </div>
   <!-- grid -->
-  {% endif %} {% endfor %} {% endblock %}
+   {% endfor %} {% endblock %}
+  
