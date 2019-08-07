@@ -18,7 +18,8 @@ def get_recipes():
     all_recipes=list(mongo.db.recipes.find())
     all_principles=list(mongo.db.principle_ingredients.find())
     all_difficulties = list(mongo.db.difficulty_levels.find())
-    return render_template("/display/list_recipes.html", recipes=all_recipes, manage_cuisines=all_cuisines, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
+    length_recipes = len(all_recipes)
+    return render_template("/display/list_recipes.html", recipes=all_recipes, manage_cuisines=all_cuisines, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties, length_recipes=length_recipes)
 
 @app.route('/add_recipe')
 def add_recipe():
@@ -164,13 +165,13 @@ def update_cuisine(cuisine_id):
 
 @app.route('/get_cuisine_filtered_recipes/<cuisine_filter>', methods=['POST','GET'])
 def get_cuisine_filtered_recipes(cuisine_filter):
-    all_recipes=mongo.db.recipes.find()
+    all_recipes=list(mongo.db.recipes.find())
     all_difficulties=list(mongo.db.difficulty_levels.find())
     all_cuisines=list(mongo.db.cuisine_type.find())
     all_principles=list(mongo.db.principle_ingredients.find())
-    filtered_recipes=filter(lambda x:x['cuisine_type']==cuisine_filter, all_recipes)
-    length_filtered_recipes=len(list(filtered_recipes))
-    return render_template("display/display_by_cuisine_filter.html", length_filtered_recipes, recipes=filtered_recipes, cuisine_filter=cuisine_filter, cuisines=all_cuisines, manage_cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
+    filtered_recipes=list(filter(lambda x:x['cuisine_type']==cuisine_filter, all_recipes))
+    length_filtered_recipes=len(filtered_recipes)
+    return render_template("display/display_by_cuisine_filter.html", recipes=filtered_recipes, cuisine_filter=cuisine_filter, cuisines=all_cuisines, manage_cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties, length_recipes=length_filtered_recipes)
 
 ######################################################################## Principle Ingredient Operations
 
@@ -218,11 +219,13 @@ def update_principle(principle_id):
 
 @app.route('/get_principle_filtered_recipes/<principle_filter>', methods=['POST','GET'])
 def get_principle_filtered_recipes(principle_filter):
-    all_recipes=mongo.db.recipes.find()
+    all_recipes=list(mongo.db.recipes.find())
     all_difficulties=list(mongo.db.difficulty_levels.find())
     all_cuisines=list(mongo.db.cuisine_type.find())
     all_principles=list(mongo.db.principle_ingredients.find())
-    return render_template("display/display_by_principle_filter.html", recipes=all_recipes, principle_filter=principle_filter, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
+    filtered_recipes=list(filter(lambda x:x['principle_ingredient']==principle_filter, all_recipes))
+    length_filtered_recipes=len(filtered_recipes)
+    return render_template("display/display_by_principle_filter.html", recipes=filtered_recipes, principle_filter=principle_filter, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties,length_recipes=length_filtered_recipes)
 
 
 ######################################################################## Principle Ingredient Operations
@@ -271,11 +274,13 @@ def update_difficulty(difficulty_id):
 
 @app.route('/get_difficulty_filtered_recipes/<difficulty_filter>', methods=['POST','GET'])
 def get_difficulty_filtered_recipes(difficulty_filter):
-    all_recipes=mongo.db.recipes.find()
+    all_recipes=list(mongo.db.recipes.find())
     all_difficulties=list(mongo.db.difficulty_levels.find())
     all_cuisines=list(mongo.db.cuisine_type.find())
     all_principles=list(mongo.db.principle_ingredients.find())
-    return render_template("display/display_by_difficulty_filter.html", recipes=all_recipes, difficulty_filter=difficulty_filter, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties)
+    filtered_recipes=list(filter(lambda x:x['difficulty']==difficulty_filter, all_recipes))
+    length_filtered_recipes=len(filtered_recipes)
+    return render_template("display/display_by_difficulty_filter.html", recipes=filtered_recipes, difficulty_filter=difficulty_filter, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties, length_recipes=length_filtered_recipes)
     
 
 #################################################################################################
