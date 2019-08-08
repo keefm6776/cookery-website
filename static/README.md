@@ -61,12 +61,21 @@ Which are located in the Wireframe directory.
 
 ## Features
 
+				1.	From each menu, the user can add a recipe to the database.
+				2.	From each menu, the user can list all the recipes in the database.
+				3.	From each menu, the user can filter the recipes by the allocated cuisine type.
+				4.	From each menu, the user can filter the recipes by the allocated difficulty level.
+				5.	From each menu, the user can filter the recipes by the allocated principle ingredient.
+				6.	From each menu the user can manage the lists presented for the filters and as options in the addr recipe form.
+				7.	Each record in each collection is presented to the user in a card format, and each instance has a button to
+					edit, delete or view the recipe clicked on.
+				
+				
+
 ## Features Left To Implement
 
-                1.  System of logging upvotes by users, and order the recipes based on the number of votes for each recipe.
-                2.  Summary Statistics of the number of records displayed.
-
-
+                1.	User registration to automate the contributed by field and to filter out user's own recipes.
+                2.	User registration to limit the people who can manage the cuisine, difficulty and principle ingredient lists.
 
 ## Technologies Used
 
@@ -111,7 +120,8 @@ Each new feature had been tested after each stage of development within the AWS 
 
 				1.	List Recipes         - By checking between MongoDB and my list_recipes screen to make sure that the number of documents in MongoDB
 										   and the number on my list recipes page match.  Also by checking that each of the documents is displayed once
-								           and that each is there.
+								           and that each is there.  I have also checked that the documents are sorted and presented with the newest
+								           recipe first.
 										   
 				2.	Add		             - Each Add feature for recipes, Cusines, difficulties & principle ingredients have been checked to make sure that
 										   the document supplied is added to the collection.  I have also checked that the fields match the ones that have
@@ -236,7 +246,7 @@ This project has been deployed via Heroku at https://cookery-website-flask-mongo
 
 ### Content
 				- Before starting this project I looked at various sites recipe based sites, to get a flavour of what is required, these included:
-					1.
+					1.	https://www.bbcgoodfood.com
 					2.
 					3.
 					4.
@@ -247,6 +257,8 @@ This project has been deployed via Heroku at https://cookery-website-flask-mongo
                 - Code institute notes for basics on Javascript and JQuery to adapt and base my code on.
                 - https://www.w3schools.com/ for information and examples to adapt and base my code on.
                 - https://stackoverflow.com/ for information and examples to adapt and base my code on.
+                - https://www.bbcgoodfood.com/recipes for sample recipes to include in my site.
                 - My Mentor Theo Despoudis - for his general guidance.
-                - The CI Tutor Team, especially Hayley for her repeated help with different issues.  Each
-                  Time she guided me through what I was struggling to do, and kept at it until we got there.
+                - The CI Tutor Team. (However a special mention for Haley Schafer for her repeated help with different issues.  Each
+                  Time she guided me through what I was struggling to do, and kept at it until we got there).
+                - 

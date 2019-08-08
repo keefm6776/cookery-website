@@ -1,7 +1,8 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, flash
+from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from datetime import datetime
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'cookbook'
@@ -14,24 +15,30 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/get_recipes')
 def get_recipes():
-    all_cuisines=list(mongo.db.cuisine_type.find())
-    all_recipes=list(mongo.db.recipes.find())
-    all_principles=list(mongo.db.principle_ingredients.find())
-    all_difficulties = list(mongo.db.difficulty_levels.find())
-    length_recipes = len(all_recipes)
+    all_cuisines=list(mongo.db.cuisine_type.find())               #get all cuisines for menu
+    all_recipes=list(mongo.db.recipes.find())                     #get list of all recipes in the collection
+    all_recipes.sort(key=lambda item:item['added'], reverse=True) #sort recipes by date, so newest recipe is shown first
+    all_principles=list(mongo.db.principle_ingredients.find())    #get all principle ingredients for menu
+    all_difficulties = list(mongo.db.difficulty_levels.find())    #get all difficulty levels for menu
+    length_recipes = len(all_recipes)                             #calculate length of recipes list for info on how many displayed
     return render_template("/display/list_recipes.html", recipes=all_recipes, manage_cuisines=all_cuisines, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties, length_recipes=length_recipes)
 
 @app.route('/add_recipe')
 def add_recipe():
-    all_difficulties=list(mongo.db.difficulty_levels.find())
-    all_cuisines=list(mongo.db.cuisine_type.find())
-    all_principles=list(mongo.db.principle_ingredients.find())
+    all_difficulties=list(mongo.db.difficulty_levels.find())        #get all difficulty levels for menu
+    all_cuisines=list(mongo.db.cuisine_type.find())                 #get all cuisine types for menu
+    all_principles=list(mongo.db.principle_ingredients.find())      #get all principle ingredients for menu
     return render_template("/add/add_recipe.html", difficulties=all_difficulties, manage_cuisines=all_cuisines, cuisines=all_cuisines, principles=all_principles)
     
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
-    recipes = mongo.db.recipes
-    recipes.insert_one(request.form.to_dict())
+    recipes = mongo.db.recipes                                      # set recipes as recipes collection 
+    now = datetime.now()                                            # make now the time & date of now
+    date_string = now.strftime("%d/%m/%Y %H:%M:%S")                 # convert above into string format
+    date_dictionary = {'added': date_string}                        # convert string to dictionary
+    document_dict = request.form.to_dict()                          # get inputs of add recipe form into dictionary
+    document_dict.update(date_dictionary)                           # add the now dictionary to the above (used for sorting recipes)
+    recipes.insert_one(document_dict)                               # insert the combined dictionary into recipes
     return redirect(url_for('get_recipes'))
     
 @app.route('/view_recipe/<recipe_id>')
@@ -108,7 +115,8 @@ def update_recipe(recipe_id):
     'method10': request.form.get('method10'),
     'principle_ingredient': request.form.get('principle_ingredient'),
     'contributor': request.form.get('contributor'),
-    'image_url': request.form.get('image_url')
+    'image_url': request.form.get('image_url'),
+    'added' : request.form.get('added')
     })
     return redirect(url_for('get_recipes'))
     
@@ -166,6 +174,7 @@ def update_cuisine(cuisine_id):
 @app.route('/get_cuisine_filtered_recipes/<cuisine_filter>', methods=['POST','GET'])
 def get_cuisine_filtered_recipes(cuisine_filter):
     all_recipes=list(mongo.db.recipes.find())
+    all_recipes.sort(key=lambda item:item['added'], reverse=True)
     all_difficulties=list(mongo.db.difficulty_levels.find())
     all_cuisines=list(mongo.db.cuisine_type.find())
     all_principles=list(mongo.db.principle_ingredients.find())
@@ -220,6 +229,7 @@ def update_principle(principle_id):
 @app.route('/get_principle_filtered_recipes/<principle_filter>', methods=['POST','GET'])
 def get_principle_filtered_recipes(principle_filter):
     all_recipes=list(mongo.db.recipes.find())
+    all_recipes.sort(key=lambda item:item['added'], reverse=True)
     all_difficulties=list(mongo.db.difficulty_levels.find())
     all_cuisines=list(mongo.db.cuisine_type.find())
     all_principles=list(mongo.db.principle_ingredients.find())
@@ -275,6 +285,7 @@ def update_difficulty(difficulty_id):
 @app.route('/get_difficulty_filtered_recipes/<difficulty_filter>', methods=['POST','GET'])
 def get_difficulty_filtered_recipes(difficulty_filter):
     all_recipes=list(mongo.db.recipes.find())
+    all_recipes.sort(key=lambda item:item['added'], reverse=True)
     all_difficulties=list(mongo.db.difficulty_levels.find())
     all_cuisines=list(mongo.db.cuisine_type.find())
     all_principles=list(mongo.db.principle_ingredients.find())
