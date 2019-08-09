@@ -1,108 +1,143 @@
 /* Custom Stylesheet */
+
 /** * Use this file to override Materialize files so you can update * the core Materialize files in the future * * Made By MaterializeCSS.com */
- .icon-block {
-     padding: 0 15px;
+
+.icon-block {
+ padding: 0 15px;
 }
- .icon-block .material-icons {
-     font-size: inherit;
+
+.icon-block .material-icons {
+ font-size: inherit;
 }
+
 /* User Styling */
+
 /***************************************************************************Hero Styling*****/
+
 /***** Hero css adapted from code @ https://www.w3schools.com *******************************/
- body, html {
-     height: 100%;
-     background-color: black;
+
+body,
+html {
+ height: 100%;
+ background-color: black;
 }
+
 /* The hero image */
- .hero-image {
-     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/earth.jpg');
-    /* Set a specific height */
-     height: 50%;
-    /* Position and center the image to scale nicely on all screens */
-     background-position: center;
-     background-repeat: no-repeat;
-     background-size: cover;
-     position: relative;
+
+.hero-image {
+ background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/earth.jpg');
+ /* Set a specific height */
+ height: 50%;
+ /* Position and center the image to scale nicely on all screens */
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ position: relative;
 }
+
 /* Place text in the middle of the image */
- .hero-text {
-     text-align: center;
-     position: absolute;
-     top: 50%;
-     left: 50%;
-     transform: translate(-50%, -50%);
-     color: white;
+
+.hero-text {
+ text-align: center;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ color: white;
 }
+
 /**************************************************** General Styling */
- .center-item {
-     text-align: center;
+
+.center-item {
+ text-align: center;
 }
- .list-title {
-     margin: 5px;
-     padding: 5px;
-     background-color: white;
+
+.list-title {
+ margin: 5px;
+ padding: 5px;
+ background-color: white;
 }
- .header-container {
-     padding: 5px;
-     background-color: black;
+
+.header-container {
+ padding: 5px;
+ background-color: black;
 }
+
 /***************************************************** Navigation Styling */
- .sidenav {
-     background-color: grey;
+
+.sidenav {
+ background-color: grey;
 }
- .sidenav ul a {
-     color: white;
-     text-align: right;
+
+.sidenav ul a {
+ color: white;
+ text-align: right;
 }
- .nav ul a {
-     font-size: 0.7rem;
+
+.dropdown-content {
+ color: green;
 }
- .dropdown-content {
-     color: green;
+
+.nav ul a {
+ font-size: 0.6rem;
 }
+
+.dropdown-content li>a {
+ color: #26a69a;
+}
+
 /**************************************************View Recipe Styling */
- #recipe-image {
-     margin: 5px;
-     padding: 0;
-     border-style: groove;
-     min-height: 100px;
-     min-width: 150px;
+
+#recipe-image {
+ margin: 5px;
+ padding: 0;
+ border-style: groove;
+ min-height: 100px;
+ min-width: 150px;
 }
- #recipe-image img {
-     height: 100%;
-     width: 100%;
+
+#recipe-image img {
+ height: 100%;
+ width: 100%;
 }
- #recipe-header {
-     background-color: lightgrey;
-     margin: 0;
-     padding: 5px;
+
+#recipe-header {
+ background-color: lightgrey;
+ margin: 0;
+ padding: 5px;
 }
- #recipe-instructions {
-     padding: 0;
-     margin: 0;
-     background-color: grey;
+
+#recipe-instructions {
+ padding: 0;
+ margin: 0;
+ background-color: grey;
 }
- #ingredients-list {
-     background-color: grey;
-     margin: 0;
-     padding: 5px;
+
+#ingredients-list {
+ background-color: grey;
+ margin: 0;
+ padding: 5px;
 }
- #method-list {
-     background-color: grey;
-     margin: 0;
-     padding: 5px;
+
+#method-list {
+ background-color: grey;
+ margin: 0;
+ padding: 5px;
 }
- #view-recipe-controls {
-     margin: 5px;
+
+#view-recipe-controls {
+ margin: 5px;
 }
+
 /********************************************************************* Styling */
- #website-blurb {
-     font-size: 12px;
-     background-color: lightgrey;
+
+#website-blurb {
+ font-size: 12px;
+ background-color: lightgrey;
 }
- .add-form {
-     padding: 5px;
-     margin: 5px;
-     background-color: white 
+
+.add-form {
+ padding: 5px;
+ margin: 5px;
+ background-color: white
 }
- 
