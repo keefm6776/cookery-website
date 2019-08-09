@@ -1,46 +1,41 @@
 {% extends 'base.html' %} {% block content %}
-
 <div id="add-cuisine-container" class="add-form">
-    <h3>Add Cuisine</h3>
-
-    <div class="row">
-        <form action="{{url_for('insert_cuisine')}}" method="POST" class="col s12">
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">subject</i>
-                    <label>Cuisine Name</label>
-                    <input placeholder="Cuisine Name" id="name" name="name" type="text" class="validate" required>
-                    <!-- Gather Cuisine name info -->
-                </div>
-                <!-- input-field -->
+   <h3>Add Cuisine</h3>
+   <div class="row">
+      <form action="{{url_for('insert_cuisine')}}" method="POST" class="col s12">
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="material-icons prefix">subject</i>
+               <label>Cuisine Name</label>
+               <input placeholder="Cuisine Name" id="name" name="name" type="text" class="validate" required>
+               <!-- Gather Cuisine name info -->
             </div>
-            <!-- Row -->
-
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">web</i>
-                    <label>Flag Image Address</label>
-                    <input placeholder="Flag Image URL (format http://)" id="flag_image" name="flag_image" type="url" class="validate" required>
-                    <!-- Gather url for Cuisine image -->
-                </div>
-                <!-- input-field -->
+            <!-- input-field -->
+         </div>
+         <!-- Row -->
+         <div class="row">
+            <div class="input-field col s12">
+               <i class="material-icons prefix">web</i>
+               <label>Flag Image Address</label>
+               <input placeholder="Flag Image URL (format http://)" id="flag_image" name="flag_image" type="url" class="validate" required>
+               <!-- Gather url for Cuisine image -->
             </div>
-            <!-- Row -->
-
-            <div class="row">
-                <div id="add-cuisine-controls" class="left">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Add Cuisine
-                <i class="material-icons right">playlist_add</i>
-            </button>
-                    <button onclick="window.history.back()" class="waves-effect waves-light btn btn_small purple"><i class="material-icons prefix">exit_to_app</i></button>
-                </div>
-                <!--add-cuisine-controls-->
+            <!-- input-field -->
+         </div>
+         <!-- Row -->
+         <div class="row">
+            <div id="add-cuisine-controls" class="left">
+               <button class="btn waves-effect waves-light" type="submit" name="action">Add Cuisine
+               <i class="material-icons right">playlist_add</i>
+               </button>
+               <button onclick="window.history.back()" class="waves-effect waves-light btn btn_small purple"><i class="material-icons prefix">exit_to_app</i></button>
             </div>
-            <!--Row-->
-        </form>
-    </div>
-    <!-- Row -->
+            <!--add-cuisine-controls-->
+         </div>
+         <!--Row-->
+      </form>
+   </div>
+   <!-- Row -->
 </div>
 <!--add-cuisine-container-->
-
 {% endblock %}

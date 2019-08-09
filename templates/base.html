@@ -1,167 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Global Cuisine Cookbook</title>
-
-  <!--Load links to CSS files for materialize and my own-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{{url_for('static', filename='css/materialize.min.css')}}" type="text/css">
-  <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
-
-</head>
-
-<!-- Navigation based around materializecss navbar -->
-
-<nav class="black lighten-1" role="navigation">
-  <div class="nav-wrapper container">
-    <ul id='manage-dropdown' class="dropdown-content right hide-on-med-and-down">
-      <li><a href="{{url_for('get_cuisines')}}">Cuisines</a></li>
-      <li><a href="{{url_for('get_principles')}}">Principle Ingredients</a></li>
-      <li><a href="{{url_for('get_difficulties')}}">Difficulty Levels</a></li>
-      <li class="divider"></li>
-    </ul>
-
-    <ul id='filter-cuisine-dropdown' class="dropdown-content right hide-on-med-and-down">
-      {% for cuisine in cuisines %}
-      <ul>
-        <li><a href="{{url_for('get_cuisine_filtered_recipes', cuisine_filter=cuisine.name)}}">{{cuisine.name}}</a></li>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Global Cuisine Cookbook</title>
+      <!--Load links to CSS files for materialize and my own-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+      <link rel="stylesheet" href="{{url_for('static', filename='css/materialize.min.css')}}" type="text/css">
+      <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
+   </head>
+   <!-- Navigation based around materializecss navbar -->
+   <nav class="black lighten-1" role="navigation">
+      <div class="nav-wrapper container">
+      <ul id='manage-dropdown' class="dropdown-content right hide-on-med-and-down">
+         <li><a href="{{url_for('get_cuisines')}}">Cuisines</a></li>
+         <li><a href="{{url_for('get_principles')}}">Principle Ingredients</a></li>
+         <li><a href="{{url_for('get_difficulties')}}">Difficulty Levels</a></li>
+         <li class="divider"></li>
       </ul>
-      {% endfor %}
-      <li class="divider"></li>
-    </ul>
-
-    <ul id='filter-difficulty-dropdown' class="dropdown-content right hide-on-med-and-down">
-      {% for difficulty in difficulties %}
-      <ul>
-        </li><a href="{{url_for('get_difficulty_filtered_recipes', difficulty_filter=difficulty.level)}}">{{difficulty.level}}</a></li>
-      </ul>
-      {% endfor %}
-      <li class="divider"></li>
-    </ul>
-
-    <ul id='manage-principle-dropdown' class="dropdown-content right hide-on-med-and-down">
-      {% for ingredient in principles %}
-      <ul>
-        <li><a href="{{url_for('get_principle_filtered_recipes', principle_filter=ingredient.name)}}">{{ingredient.name}}</a></li>
-      </ul>
-      {% endfor %}
-      <li class="divider"></li>
-    </ul>
-
-    <div class="nav-wapper">
-      <ul class="right hide-on-med-and-down">
-        <li><a href="{{url_for('get_recipes')}}">List All Recipes</a></li>
-        <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
-        <!-- Dropdown Triggers -->
-        <li><a class="dropdown-trigger" href="#!" data-target="filter-cuisine-dropdown">Filter By Cuisine<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a class="dropdown-trigger" href="#!" data-target="filter-difficulty-dropdown">Filter By Difficulty<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a class="dropdown-trigger" href="#!" data-target="manage-principle-dropdown">Filter By Ingredient<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a class="dropdown-trigger" href="#!" data-target="manage-dropdown">Manage Lists<i class="material-icons right">arrow_drop_down</i></a></li>
-      </ul>
-
-      <ul id="nav-mobile" class="sidenav">
-        <li><a href="{{url_for('get_recipes')}}">List All Recipes</a></li>
-        <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
-        <li><a href="">Filter Recipes By Cuisine:</a> 
-          {% for cuisine in cuisines %}
-          <ul>
+      <ul id='filter-cuisine-dropdown' class="dropdown-content right hide-on-med-and-down">
+         {% for cuisine in cuisines %}
+         <ul>
             <li><a href="{{url_for('get_cuisine_filtered_recipes', cuisine_filter=cuisine.name)}}">{{cuisine.name}}</a></li>
-          </ul>
-          {% endfor %}
-        </li>
-        
-        <li><a href="">Filter Recipes By Difficulty:</a> 
-          {% for difficulty in difficulties %}
-          <ul>
-            <li><a href="{{url_for('get_difficulty_filtered_recipes', difficulty_filter=difficulty.level)}}">{{difficulty.level}}</a></li>
-          </ul>
-          {% endfor %}
-        </li>
-        
-        <li><a href="">Filter Recipes By Principle Ingredient:</a> 
-          {% for ingredient in principles %}
-          <ul>
-            <li><a href="{{url_for('get_principle_filtered_recipes', principle_filter=ingredient.name)}}">{{ingredient.name}}</a></li>
-          </ul>
-          {% endfor %}
-        </li>
-        <li><a href="{{url_for('get_cuisines')}}">Manage Cuisines</a></li>
-        <li><a href="{{url_for('get_principles')}}">Manage Principle Ingredients</a></li>
-        <li><a href="{{url_for('get_difficulties')}}">Manage Difficulty Levels</a></li>
+         </ul>
+         {% endfor %}
+         <li class="divider"></li>
       </ul>
-      <!-- nav-mobile -->
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </div>
-    <!-- nav-wrapper container -->
-</nav>
-
-
-<body>
-
-  <!-- hero image adapted from code at https://www.w3schools.com -->
-
-  <div class="hero-image">
-    <div class="hero-text">
-      <p>
-        <h4><em>Global Cuisines</em></h4>
-      </p>
-      <p>
-        <h6>Keep Your Shopping Simple, With Recipes Of 10 Ingredients Or Less.</h6>
-      </p>
-      <p>
-        <h6>View & Share Recipes With Like Minded People Across The Globe</h6>
-      </p>
-    </div>
-  </div>
-
-  {% block content %} {% endblock %}
-
-</body>
-
-<footer class="page-footer black">
-  <div class="container">
-    <div class="row">
-      <div class="col l6 s12">
-        <h5 class="white-text">About Us</h5>
-        <p class="grey-text text-lighten-4">We aim to make you hectic life easier. If we can improve this site in any way, contact us on improvements@global_cuisines.com</p>
+      <ul id='filter-difficulty-dropdown' class="dropdown-content right hide-on-med-and-down">
+         {% for difficulty in difficulties %}
+         <ul>
+            </li><a href="{{url_for('get_difficulty_filtered_recipes', difficulty_filter=difficulty.level)}}">{{difficulty.level}}</a></li>
+         </ul>
+         {% endfor %}
+         <li class="divider"></li>
+      </ul>
+      <ul id='manage-principle-dropdown' class="dropdown-content right hide-on-med-and-down">
+         {% for ingredient in principles %}
+         <ul>
+            <li><a href="{{url_for('get_principle_filtered_recipes', principle_filter=ingredient.name)}}">{{ingredient.name}}</a></li>
+         </ul>
+         {% endfor %}
+         <li class="divider"></li>
+      </ul>
+      <div class="nav-wapper">
+         <ul class="right hide-on-med-and-down">
+            <li><a href="{{url_for('get_recipes')}}">List All Recipes</a></li>
+            <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
+            <!-- Dropdown Triggers -->
+            <li><a class="dropdown-trigger" href="#!" data-target="filter-cuisine-dropdown">Filter By Cuisine<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="filter-difficulty-dropdown">Filter By Difficulty<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="manage-principle-dropdown">Filter By Ingredient<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="manage-dropdown">Manage Lists<i class="material-icons right">arrow_drop_down</i></a></li>
+         </ul>
+         <ul id="nav-mobile" class="sidenav">
+            <li><a href="{{url_for('get_recipes')}}">List All Recipes</a></li>
+            <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
+            <li>
+               <a href="">Filter Recipes By Cuisine:</a> 
+               {% for cuisine in cuisines %}
+               <ul>
+                  <li><a href="{{url_for('get_cuisine_filtered_recipes', cuisine_filter=cuisine.name)}}">{{cuisine.name}}</a></li>
+               </ul>
+               {% endfor %}
+            </li>
+            <li>
+               <a href="">Filter Recipes By Difficulty:</a> 
+               {% for difficulty in difficulties %}
+               <ul>
+                  <li><a href="{{url_for('get_difficulty_filtered_recipes', difficulty_filter=difficulty.level)}}">{{difficulty.level}}</a></li>
+               </ul>
+               {% endfor %}
+            </li>
+            <li>
+               <a href="">Filter Recipes By Principle Ingredient:</a> 
+               {% for ingredient in principles %}
+               <ul>
+                  <li><a href="{{url_for('get_principle_filtered_recipes', principle_filter=ingredient.name)}}">{{ingredient.name}}</a></li>
+               </ul>
+               {% endfor %}
+            </li>
+            <li><a href="{{url_for('get_cuisines')}}">Manage Cuisines</a></li>
+            <li><a href="{{url_for('get_principles')}}">Manage Principle Ingredients</a></li>
+            <li><a href="{{url_for('get_difficulties')}}">Manage Difficulty Levels</a></li>
+         </ul>
+         <!-- nav-mobile -->
+         <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       </div>
-
-      <div class="col l3 s12">
-        <h5 class="white-text">Follow Us:</h5>
-        <ul>
-          <li><a class="white-text" href="https://www.facebook.com/global_cuisines"><i class="fa fa-facebook"></i> Facebook</a></li>
-          <li><a class="white-text" href="https://www.twitter.com/global_cuisines">Twitter</a></li>
-          <li><a class="white-text" href="https://www.snapchat.com/global_cuisines">Snapchat</a></li>
-        </ul>
+      <!-- nav-wrapper container -->
+   </nav>
+   <body>
+      <!-- hero image adapted from code at https://www.w3schools.com -->
+      <div class="hero-image">
+         <div class="hero-text">
+            <p>
+            <h4><em>Global Cuisines</em></h4>
+            </p>
+            <p>
+            <h6>Keep Your Shopping Simple, With Recipes Of 10 Ingredients Or Less.</h6>
+            </p>
+            <p>
+            <h6>View & Share Recipes With Like Minded People Across The Globe</h6>
+            </p>
+         </div>
       </div>
-    </div>
-  </div>
-
-  <div class="footer-copyright">
-    <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-    </div>
-  </div>
-</footer>
-
-<!--JavaScript at end of body for optimized loading-->
-<script type="text/javascript" src="{{url_for('static', filename='js/jquery.js')}}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/init.js')}}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/materialize.min.js')}}"></script>
-<script type="text/javascript" src="{{url_for('static', filename='js/dynamic-form.js')}}"></script>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('select').formSelect();
-    $(".dropdown-trigger").dropdown();
-  });
-</script>
-
-
-
-
+      {% block content %} {% endblock %}
+   </body>
+   <footer class="page-footer black">
+      <div class="container">
+         <div class="row">
+            <div class="col l6 s12">
+               <h5 class="white-text">About Us</h5>
+               <p class="grey-text text-lighten-4">We aim to make you hectic life easier. If we can improve this site in any way, contact us on improvements@global_cuisines.com</p>
+            </div>
+            <div class="col l3 s12">
+               <h5 class="white-text">Follow Us:</h5>
+               <ul>
+                  <li><a class="white-text" href="https://www.facebook.com/global_cuisines"><i class="fa fa-facebook"></i> Facebook</a></li>
+                  <li><a class="white-text" href="https://www.twitter.com/global_cuisines">Twitter</a></li>
+                  <li><a class="white-text" href="https://www.snapchat.com/global_cuisines">Snapchat</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <div class="footer-copyright">
+         <div class="container">
+            Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+         </div>
+      </div>
+   </footer>
+   <!--JavaScript at end of body for optimized loading-->
+   <script type="text/javascript" src="{{url_for('static', filename='js/jquery.js')}}"></script>
+   <script type="text/javascript" src="{{url_for('static', filename='js/init.js')}}"></script>
+   <script type="text/javascript" src="{{url_for('static', filename='js/materialize.min.js')}}"></script>
+   <script type="text/javascript" src="{{url_for('static', filename='js/dynamic-form.js')}}"></script>
+   <script type="text/javascript">
+      $(document).ready(function() {
+        $('select').formSelect();
+        $(".dropdown-trigger").dropdown();
+      });
+   </script>
 </html>

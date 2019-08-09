@@ -1,38 +1,35 @@
 {% extends 'base.html' %} {% block content %}
-
 <div id='manage-principles-header-container' class='header-container'>
-  <div id='manage-principles-header' class='list-title'>
-    <h4>Principle Ingredients <a href="{{url_for('add_principle')}}" class="waves-effect waves-light btn btn_small green">Add</a></h4>
-  </div>
-  <!-- manage-principles-header -->
+   <div id='manage-principles-header' class='list-title'>
+      <h4>Principle Ingredients <a href="{{url_for('add_principle')}}" class="waves-effect waves-light btn btn_small green">Add</a></h4>
+   </div>
+   <!-- manage-principles-header -->
 </div>
 <!-- manage-principles-header-container -->
-
 <!-- card effect adapted from code at https://www.w3schools.com -->
-
 <div id="ingredient-cards" class="row">
-  {% for principle in principles %}
-  <div class="col s12 m6 l3 xl2">
-    <div class="card">
-      <div id="recipe-list" class="card-image">
-        <img src="{{principle.image_url}}" onerror="this.onerror=null;this.src='{{url_for('static', filename='images/missing_image.png')}}';" width="600" height="300" />
+   {% for principle in principles %}
+   <div class="col s12 m6 l3 xl2">
+      <div class="card">
+         <div id="recipe-list" class="card-image">
+            <img src="{{principle.image_url}}" onerror="this.onerror=null;this.src='{{url_for('static', filename='images/missing_image.png')}}';" width="600" height="300" />
+         </div>
+         <!-- recipe-list-->
+         <div class="card-content class-size">
+            <span class="card-title">
+            <h4>{{principle.name}}</h4>
+         </span>
+         </div>
+         <!-- card-content -->
+         <div class="card-action">
+            <p></p>
+            <a href="{{url_for('edit_principle', principle_id=principle._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
+            <a href="{{url_for('delete_principle', principle_id=principle._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
+            <p></p>
+         </div>
+         <!-- card-action-->
       </div>
-      <!-- recipe-list-->
-
-      <div class="card-content class-size">
-        <span class="card-title"><h4>{{principle.name}}</h4></span>
-      </div>
-      <!-- card-content -->
-
-      <div class="card-action">
-        <p></p>
-        <a href="{{url_for('edit_principle', principle_id=principle._id)}}" class="waves-effect waves-light btn btn_small blue">Edit</a>
-        <a href="{{url_for('delete_principle', principle_id=principle._id)}}" class="waves-effect waves-light btn btn_small red">Delete</a>
-        <p></p>
-      </div>
-      <!-- card-action-->
-    </div>
-    <!-- card -->
-  </div>
-  <!-- grid -->
-  {% endfor %} {% endblock %}
+      <!-- card -->
+   </div>
+   <!-- grid -->
+   {% endfor %} {% endblock %}
