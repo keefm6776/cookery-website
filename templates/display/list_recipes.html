@@ -1,9 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
-<h4>All Available ({{length_recipes}} Total) <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn btn_small green">Add</a></h4>
+<div id='full-list-header-container' class='header-container'>
+  <div id='full-list-header' class='list-title'>
+    <h4>All Available Recipes ({{length_recipes}} Total) <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn btn_small green">Add</a></h4>
+  </div>
+  <!-- full-list-header-->
+</div>
+<!-- full-list-header-container -->
 
-<!-- card effect adapted from code at https://www.w3schools.com -->
-
+<!-- following card effect adapted from code at https://www.w3schools.com -->
 <div id="recipe-cards" class="row">
   {% for recipe in recipes %}
   <div class="col s12 m6 l3 xl2">

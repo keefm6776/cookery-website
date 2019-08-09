@@ -1,11 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="row">
-  <div>
-    <h3>Principle Ingredients       <a href="{{url_for('add_principle')}}" class="waves-effect waves-light btn btn_small green">Add</a></h3>
+<div id='manage-principles-header-container' class='header-container'>
+  <div id='manage-principles-header' class='list-title'>
+    <h4>Principle Ingredients <a href="{{url_for('add_principle')}}" class="waves-effect waves-light btn btn_small green">Add</a></h4>
   </div>
+  <!-- manage-principles-header -->
 </div>
-<!-- Row -->
+<!-- manage-principles-header-container -->
 
 <!-- card effect adapted from code at https://www.w3schools.com -->
 

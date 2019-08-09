@@ -31,7 +31,7 @@ instrcutions.
 
 Allow for editing and deleting of the recipe records, either on  seperate pages, or built into the list/detail pages.
 
-Optionally, you may choose to add basic user registration adn authentication to the site.  This can be as simple as
+Optionally, you may choose to add basic user registration and authentication to the site.  This can be as simple as
 adding a username field to the recipe creation form, without a password (for this project only, this is not expected 
 to be secure)
 
@@ -166,7 +166,7 @@ to have the mobile menu and too small to include this option (More Below).  I wa
 but I am not particularly concerned as this has a very low market share from between 3-4% from the stats quoted on Wikipedia.  At this stage this share would only be 
 decreasing with desktop computers being on the decline and Windows 10 taking over this market with MS Edge.  
 
-Issues:
+Resolved Issues:
 
 				1.   I found that the user was able to add a blank document in each of the collections.  I rectified this with "required" tag on each of 
 					 the input/select fields.  The user is now prompted when any of the important fields are left blank like name or description etc.  I
@@ -204,6 +204,8 @@ Issues:
 			    
 			    9.	 During testing I found that the Manage Lists option was missing from a tablet in landscape.  In portrait the user is presente with the mobile menu,
 			         but in landscape this option disappears from the main menu. *****************************
+			         
+Unresolved Issues:
 		
 				
 Code Validation:

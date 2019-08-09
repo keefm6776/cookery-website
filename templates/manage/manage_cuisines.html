@@ -1,14 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="row">
-  <div>
-    <h3>Cuisines <a href="{{url_for('add_cuisine')}}" class="waves-effect waves-light btn btn_small green">Add</a></h3>
+<div id='manage-cuisines-header-container' class='header-container'>
+  <div id='manage-cuisines-header' class='list-title'>
+    <h4>Cuisines <a href="{{url_for('add_cuisine')}}" class="waves-effect waves-light btn btn_small green">Add</a></h4>
   </div>
+  <!-- manage-cusines-header -->
 </div>
-<!-- Row -->
+<!-- manage-cuisines-header-container -->
 
-<!-- card effect adapted from code at https://www.w3schools.com -->
-
+<!-- following card effect adapted from code at https://www.w3schools.com -->
 <div id="cuisine-cards" class="row">
   {% for cuisine in cuisines %}
   <div class="col s12 m6 l3 xl2">

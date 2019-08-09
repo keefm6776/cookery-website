@@ -1,6 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 
-<h4>{{difficulty_filter}} Recipes ({{length_recipes}} Total) <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn btn_small green">Add</a></h4>
+<div id='difficulty-list-header-container' class='header-container'>
+  <div id='difficulty-list-header' class='list-title'>
+    <h4>{{difficulty_filter}} Recipes ({{length_recipes}} Total) <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn btn_small green">Add</a></h4>
+  </div>
+  <!-- difficulty-list-header -->
+</div>
+<!-- difficulty-list-header-container-->
 
 <!-- card effect adapted from code at https://www.w3schools.com -->
 

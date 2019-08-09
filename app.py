@@ -13,7 +13,6 @@ mongo = PyMongo(app)
 ################################################################################### Recipe Operations
 
 @app.route('/')
-@app.route('/get_recipes')
 def get_recipes():
     all_cuisines=list(mongo.db.cuisine_type.find())               #get all cuisines for menu
     all_recipes=list(mongo.db.recipes.find())                     #get list of all recipes in the collection
@@ -21,7 +20,8 @@ def get_recipes():
     all_principles=list(mongo.db.principle_ingredients.find())    #get all principle ingredients for menu
     all_difficulties = list(mongo.db.difficulty_levels.find())    #get all difficulty levels for menu
     length_recipes = len(all_recipes)                             #calculate length of recipes list for info on how many displayed
-    return render_template("/display/list_recipes.html", recipes=all_recipes, manage_cuisines=all_cuisines, cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties, length_recipes=length_recipes)
+    return render_template("/display/list_recipes.html", recipes=all_recipes, manage_cuisines=all_cuisines,\
+    cuisines=all_cuisines, principles=all_principles, difficulties=all_difficulties, length_recipes=length_recipes)
 
 @app.route('/add_recipe')
 def add_recipe():

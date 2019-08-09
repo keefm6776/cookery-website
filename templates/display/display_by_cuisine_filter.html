@@ -1,14 +1,17 @@
 {% extends 'base.html' %} {% block content %}
 
+<div id='cuisine-list-header-container' class='header-container'>
+  <div id='cusine-list-header' class='list-title'>
+    <h4>{{cuisine_filter}} Recipes ({{length_recipes}} Total) <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn btn_small green">Add</a></h4>
+  </div>
+  <!-- cusine-list-header -->
+</div>
+<!-- cuisine-list-header-container -->
 
-<h4>{{cuisine_filter}} Recipes ({{length_recipes}} Total) <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn btn_small green">Add</a></h4>
-
-
-<!-- card effect adapted from code at https://www.w3schools.com -->
-
+<!-- following card effect adapted from code at https://www.w3schools.com -->
 <div id="recipe-cards" class="row">
-  {% for recipe in recipes %} 
-  
+  {% for recipe in recipes %}
+
   <div class="col s12 m6 l3 xl2">
     <div class="card">
       <div id="recipe-list" class="card-image">
@@ -33,5 +36,4 @@
     <!-- card -->
   </div>
   <!-- grid -->
-   {% endfor %} {% endblock %}
-  
+  {% endfor %} {% endblock %}
