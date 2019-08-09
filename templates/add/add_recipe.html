@@ -1,502 +1,505 @@
 {% extends 'base.html' %} {% block content %}
 
-<h3>Add Recipe</h3>
+<div id="add-recipe-container" class="add-form">
+    <h3>Add Recipe</h3>
 
-<div class="row">
-    <form action="{{url_for('insert_recipe')}}" method="POST" class="col s12">
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">subject</i>
-                <label>Recipe Name</label>
-                <input placeholder="Recipe Name" id="recipe_name" name="recipe_name" type="text" class="validate" required>
-                <!-- get recipe name info -->
+    <div class="row">
+        <form action="{{url_for('insert_recipe')}}" method="POST" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">subject</i>
+                    <label>Recipe Name</label>
+                    <input placeholder="Recipe Name" id="recipe_name" name="recipe_name" type="text" class="validate" required>
+                    <!-- get recipe name info -->
+                </div>
+                <!-- input-field -->
             </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">subject</i>
-                <label>Description</label>
-                <input placeholder="Description" id="blurb" name="blurb" type="text" class="validate" required>
-                <!-- get recipe description info -->
+            <!-- Row -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">subject</i>
+                    <label>Description</label>
+                    <input placeholder="Description" id="blurb" name="blurb" type="text" class="validate" required>
+                    <!-- get recipe description info -->
+                </div>
+                <!-- input-field -->
             </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
+            <!-- Row -->
 
-        <div class="row">
-            <div class="input-field col s12 l6">
-                <i class="material-icons prefix">subject</i>
-                <select id="cuisine_type" name="cuisine_type" type="text" required>
+            <div class="row">
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">subject</i>
+                    <select id="cuisine_type" name="cuisine_type" type="text" required>
                     <option value="" disabled selected>Choose Cuisine</option>
                     {% for cuisine in cuisines %}
                     <option value="{{cuisine.name}}">{{cuisine.name}}</option>
                     {% endfor %}
                 </select>
-                <label>Cuisine Type</label>
-                <!-- get the cuisne type info from dynamic list -->
-            </div>
-            <!-- input-field -->
+                    <label>Cuisine Type</label>
+                    <!-- get the cuisne type info from dynamic list -->
+                </div>
+                <!-- input-field -->
 
 
-            <div class="input-field col s12 l6">
-                <i class="material-icons prefix">subject</i>
-                <select id="principle" name="principle_ingredient" type="text" required>
+                <div class="input-field col s12 l6">
+                    <i class="material-icons prefix">subject</i>
+                    <select id="principle" name="principle_ingredient" type="text" required>
                 <option value="" disabled selected>Choose Principle Ingredient</option>
             
                 {% for principle in principles %}
                      <option value="{{principle.name}}">{{principle.name}}</option>
                 {% endfor %}
                 </select>
-                <label>Principle ingredient</label>
-                <!-- get the principle ingredient info from dynamic list -->
+                    <label>Principle ingredient</label>
+                    <!-- get the principle ingredient info from dynamic list -->
+                </div>
+                <!-- input-field -->
             </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
+            <!-- Row -->
 
 
-        <div class="row">
-            <div class="input-field col l6 s12">
-                <i class="material-icons prefix">restaurant_menu</i>
-                <label>No of Servings</label>
-                <input placeholder="No of Servings" id="servings" name="servings" type="number" class="validate" required>
-                <!-- get number of servings info -->
+            <div class="row">
+                <div class="input-field col l6 s12">
+                    <i class="material-icons prefix">restaurant_menu</i>
+                    <label>No of Servings</label>
+                    <input placeholder="No of Servings" id="servings" name="servings" type="number" class="validate" required>
+                    <!-- get number of servings info -->
+                </div>
+                <!-- input-field -->
+                <div class="input-field col l6 s12">
+                    <i class="material-icons prefix">warning</i>
+                    <label>Calories Per Serving</label>
+                    <input placeholder="Calories per Serving" id="calories_per_serve" name="calories_per_serve" type="number" class="validate" required>
+                    <!-- get the calories per serving info -->
+                </div>
+                <!-- inpuit-field -->
             </div>
-            <!-- input-field -->
-            <div class="input-field col l6 s12">
-                <i class="material-icons prefix">warning</i>
-                <label>Calories Per Serving</label>
-                <input placeholder="Calories per Serving" id="calories_per_serve" name="calories_per_serve" type="number" class="validate" required>
-                <!-- get the calories per serving info -->
-            </div>
-            <!-- inpuit-field -->
-        </div>
-        <!-- Row -->
+            <!-- Row -->
 
-        <div class="row">
-            <div class="input-field col l6 s12">
-                <i class="material-icons prefix">access_time</i>
-                <label>Preperation Time</label>
-                <input placeholder="Prep Time (mins)" id="prep_time" name="prep_time" type="number" class="validate" required>
-                <!-- get the preperation time info -->
+            <div class="row">
+                <div class="input-field col l6 s12">
+                    <i class="material-icons prefix">access_time</i>
+                    <label>Preperation Time</label>
+                    <input placeholder="Prep Time (mins)" id="prep_time" name="prep_time" type="number" class="validate" required>
+                    <!-- get the preperation time info -->
+                </div>
+                <!-- input-field -->
+                <div class="input-field col l6 s12">
+                    <i class="material-icons prefix">access_time</i>
+                    <label>Cook Time</label>
+                    <input placeholder="Cook Time (mins)" id="cook_time" name="cook_time" type="number" class="validate" required>
+                    <!-- get the cooking time info -->
+                </div>
+                <!-- input-field -->
             </div>
-            <!-- input-field -->
-            <div class="input-field col l6 s12">
-                <i class="material-icons prefix">access_time</i>
-                <label>Cook Time</label>
-                <input placeholder="Cook Time (mins)" id="cook_time" name="cook_time" type="number" class="validate" required>
-                <!-- get the cooking time info -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
+            <!-- Row -->
 
-        <div class="row">
-            <div class="input-field col s6 l3">
-                <label>
+            <div class="row">
+                <div class="input-field col s6 l3">
+                    <label>
           <input type="checkbox" id="isfreezable" name="isfreezable" class="filled-in">
           <!-- get info if recipe is freezable via checkbox-->
           <span>Freezable</span>
         </label>
-            </div>
-            <!-- input-field -->
+                </div>
+                <!-- input-field -->
 
-            <div class="input-field col s6 l3">
-                <label>
+                <div class="input-field col s6 l3">
+                    <label>
           <input type="checkbox" id="ishealthy" name="ishealthy" class="filled-in">
           <!-- get info if recipe is healthy via checkbox-->
           <span>Healthy</span>
         </label>
-            </div>
-            <!-- input-field -->
+                </div>
+                <!-- input-field -->
 
-            <div class="input-field col s6 l3">
-                <label>
+                <div class="input-field col s6 l3">
+                    <label>
           <input type="checkbox" id="isvegetarian" name="isvegetarian" class="filled-in">
           <!-- get info if recipe is vegetarian via checkbox-->
           <span>Vegetarian</span>
         </label>
-            </div>
-            <!-- input-field -->
+                </div>
+                <!-- input-field -->
 
-            <div class="input-field col s6 l3">
-                <label>
+                <div class="input-field col s6 l3">
+                    <label>
           <input type="checkbox" id="isvegan" name="isvegan" class="filled-in">
           <!-- get info if recipe is vegan via checkbox-->
           <span>Vegan</span>
         </label>
+                </div>
+                <!-- input-field -->
             </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
+            <!-- Row -->
 
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">local_grocery_store</i>
-                <label>Ingredients</label>
-                <input placeholder="Ingredient 1" id="ingredient1" name="ingredient1" type="text" required>
-                <!-- get info of ingredient 1 -->
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">local_grocery_store</i>
+                    <label>Ingredients</label>
+                    <input placeholder="Ingredient 1" id="ingredient1" name="ingredient1" type="text" required>
+                    <!-- get info of ingredient 1 -->
+                </div>
+
+                <div class="input-field col s4">
+                    <input placeholder="Measure 1" id="measure1" name="measure1" type="text" required>
+                    <!-- get info of measurement 1 -->
+                </div>
+
+                <div class="input-field col s2">
+                    <input placeholder="Quantity 1" id="quantity1" name="quantity1" type="number" required>
+                    <!-- get info of quantity 1 -->
+                </div>
+                <!-- input-field -->
             </div>
+            <!-- Row -->
 
-            <div class="input-field col s4">
-                <input placeholder="Measure 1" id="measure1" name="measure1" type="text" required>
-                <!-- get info of measurement 1 -->
-            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">local_grocery_store</i>
+                    <label>Ingredients</label>
+                    <input placeholder="Ingredient 2" id="ingredient2" name="ingredient2" type="text" required>
+                    <!-- get info of ingredient 2 -->
+                </div>
 
-            <div class="input-field col s2">
-                <input placeholder="Quantity 1" id="quantity1" name="quantity1" type="number" required>
-                <!-- get info of quantity 1 -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">local_grocery_store</i>
-                <label>Ingredients</label>
-                <input placeholder="Ingredient 2" id="ingredient2" name="ingredient2" type="text" required>
-                <!-- get info of ingredient 2 -->
-            </div>
-
-            <div class="input-field col s4">
-                <input placeholder="Measure 2" id="measure2" name="measure2" type="text" required>
-                <!-- get info of measurement 2 -->
-            </div>
-
-
-            <div class="input-field col s2">
-                <input placeholder="Quantity 2" id="quantity2" name="quantity2" type="number" required>
-                <!-- get info of quantity 2 -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">local_grocery_store</i>
-                <label>Ingredients</label>
-                <input placeholder="Ingredient 3" id="ingredient3" name="ingredient3" type="text" required>
-                <!-- get info of ingredient 3 -->
-            </div>
-
-            <div class="input-field col s4">
-                <input placeholder="Measure 3" id="measure3" name="measure3" type="text" required>
-                <!-- get info of measurement 3 -->
-            </div>
+                <div class="input-field col s4">
+                    <input placeholder="Measure 2" id="measure2" name="measure2" type="text" required>
+                    <!-- get info of measurement 2 -->
+                </div>
 
 
-            <div class="input-field col s2">
-                <input placeholder="Quantity 3" id="quantity3" name="quantity3" type="number" required>
-                <!-- get info of quantity 3 -->
+                <div class="input-field col s2">
+                    <input placeholder="Quantity 2" id="quantity2" name="quantity2" type="number" required>
+                    <!-- get info of quantity 2 -->
+                </div>
+                <!-- input-field -->
             </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
+            <!-- Row -->
 
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">local_grocery_store</i>
-                <label>Ingredients</label>
-                <input placeholder="Ingredient 4" id="ingredient4" name="ingredient4" type="text">
-                <!-- get info of ingredient 4 -->
-            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">local_grocery_store</i>
+                    <label>Ingredients</label>
+                    <input placeholder="Ingredient 3" id="ingredient3" name="ingredient3" type="text" required>
+                    <!-- get info of ingredient 3 -->
+                </div>
 
-            <div class="input-field col s4">
-                <input placeholder="Measure 4" id="measure4" name="measure4" type="text">
-                <!-- get info of measurement 4 -->
-            </div>
-
-            <div class="input-field col s2">
-                <input placeholder="Quantity 4" id="quantity4" name="quantity4" type="number">
-                <!-- get info of quantity 4 -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">local_grocery_store</i>
-                <label>Ingredients</label>
-                <input placeholder="Ingredient 5" id="ingredient5" name="ingredient5" type="text">
-                <!-- get info of ingredient 5 -->
-            </div>
-
-            <div class="input-field col s4">
-                <input placeholder="Measure 5" id="measure5" name="measure5" type="text">
-                <!-- get info of measurement 5 -->
-            </div>
-
-            <div class="input-field col s2">
-                <input placeholder="Quantity 5" id="quantity5" name="quantity5" type="number">
-                <!-- get info of quantity 5 -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">local_grocery_store</i>
-                <label>Ingredients</label>
-                <input placeholder="Ingredient 6" id="ingredient6" name="ingredient6" type="text">
-                <!-- get info of ingredient 6 -->
-            </div>
-            <div class="input-field col s4">
-                <input placeholder="Measure 6" id="measure6" name="measure6" type="text">
-                <!-- get info of measurement 6 -->
-            </div>
-            <div class="input-field col s2">
-                <input placeholder="Quantity 6" id="quantity6" name="quantity6" type="number">
-                <!-- get info of quantity 6 -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">local_grocery_store</i>
-                <label>Ingredients</label>
-                <input placeholder="Ingredient 7" id="ingredient7" name="ingredient7" type="text">
-                <!-- get info of ingredient 7 -->
-            </div>
-
-            <div class="input-field col s4">
-                <input placeholder="Measure 7" id="measure7" name="measure7" type="text">
-                <!-- get info of measurement 7 -->
-            </div>
-
-            <div class="input-field col s2">
-                <input placeholder="Quantity 7" id="quantity7" name="quantity7" type="number">
-                <!-- get info of quantity 7 -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">local_grocery_store</i>
-                <label>Ingredients</label>
-                <input placeholder="Ingredient 8" id="ingredient8" name="ingredient8" type="text">
-                <!-- get info of ingredient 8 -->
-            </div>
-
-            <div class="input-field col s4">
-                <input placeholder="Measure 8" id="measure8" name="measure8" type="text">
-                <!-- get info of measurement 8 -->
-            </div>
-
-            <div class="input-field col s2">
-                <input placeholder="Quantity 8" id="quantity8" name="quantity8" type="number">
-                <!-- get info of quantity 8 -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">local_grocery_store</i>
-                <label>Ingredients</label>
-                <input placeholder="Ingredient 9" id="ingredient9" name="ingredient9" type="text">
-                <!-- get info of ingredient 9 -->
-            </div>
-
-            <div class="input-field col s4">
-                <input placeholder="Measure 9" id="measure9" name="measure9" type="text">
-                <!-- get info of measurement 9 -->
-            </div>
-            <div class="input-field col s2">
-                <input placeholder="Quantity 9" id="quantity9" name="quantity9" type="number">
-                <!-- get info of quantity 9 -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-
-        <div class="row">
-            <div class="input-field col s6">
-                <i class="material-icons prefix">local_grocery_store</i>
-                <label>Ingredients</label>
-                <input placeholder="Ingredient 10" id="ingredient10" name="ingredient10" type="text">
-                <!-- get info of ingredient 10 -->
-            </div>
-
-            <div class="input-field col s4">
-                <input placeholder="Measure 10" id="measure10" name="measure10" type="text">
-                <!-- get info of measurement 10 -->
-            </div>
-            <div class="input-field col s2">
-                <input placeholder="Quantity 10" id="quantity10" name="quantity10" type="number">
-                <!-- get info of quantity 10 -->
-            </div>
-        </div>
+                <div class="input-field col s4">
+                    <input placeholder="Measure 3" id="measure3" name="measure3" type="text" required>
+                    <!-- get info of measurement 3 -->
+                </div>
 
 
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
-                <label>Method</label>
-                <input placeholder="Method Step 1" id="method1" name="method1" type="text" required>
-                <!-- get info of 1st Method Step -->
+                <div class="input-field col s2">
+                    <input placeholder="Quantity 3" id="quantity3" name="quantity3" type="number" required>
+                    <!-- get info of quantity 3 -->
+                </div>
+                <!-- input-field -->
             </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
+            <!-- Row -->
 
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
-                <label>Method</label>
-                <input placeholder="Method Step 2" id="method2" name="method2" type="text" required>
-                <!-- get info of 2nd Method Step -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">local_grocery_store</i>
+                    <label>Ingredients</label>
+                    <input placeholder="Ingredient 4" id="ingredient4" name="ingredient4" type="text">
+                    <!-- get info of ingredient 4 -->
+                </div>
 
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
-                <label>Method</label>
-                <input placeholder="Method Step 3" id="method3" name="method3" type="text" required>
-                <!-- get info of 3rd Method Step -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
-                <label>Method</label>
-                <input placeholder="Method Step 4" id="method4" name="method4" type="text">
-                <!-- get info of 4th Method Step -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
-                <label>Method</label>
-                <input placeholder="Method Step 5" id="method5" name="method5" type="text">
-                <!-- get info of 5th Method Step -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
-                <label>Method</label>
-                <input placeholder="Method Step 6" id="method6" name="method6" type="text">
-                <!-- get info of 6th Method Step -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
-                <label>Method</label>
-                <input placeholder="Method Step 7" id="method7" name="method7" type="text">
-                <!-- get info of 7th Method Step -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
-                <label>Method</label>
-                <input placeholder="Method Step 8" id="method8" name="method8" type="text">
-                <!-- get info of 8th Method Step -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
-                <label>Method</label>
-                <input placeholder="Method Step 9" id="method9" name="method9" type="text">
-                <!-- get info of 9th Method Step -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">assignment</i>
-                <label>Method</label>
-                <input placeholder="Method Step 10" id="method10" name="method10" type="text">
-                <!-- get info of 10th Method Step -->
-            </div>
-            <!-- input field -->
-        </div>
-        <!-- Row -->
+                <div class="input-field col s4">
+                    <input placeholder="Measure 4" id="measure4" name="measure4" type="text">
+                    <!-- get info of measurement 4 -->
+                </div>
 
-        <div class="row">
+                <div class="input-field col s2">
+                    <input placeholder="Quantity 4" id="quantity4" name="quantity4" type="number">
+                    <!-- get info of quantity 4 -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
 
-        </div>
-        <!-- Row -->
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">local_grocery_store</i>
+                    <label>Ingredients</label>
+                    <input placeholder="Ingredient 5" id="ingredient5" name="ingredient5" type="text">
+                    <!-- get info of ingredient 5 -->
+                </div>
 
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">assistant</i>
-                <select id="difficulty" name="difficulty" type="text" required>
+                <div class="input-field col s4">
+                    <input placeholder="Measure 5" id="measure5" name="measure5" type="text">
+                    <!-- get info of measurement 5 -->
+                </div>
+
+                <div class="input-field col s2">
+                    <input placeholder="Quantity 5" id="quantity5" name="quantity5" type="number">
+                    <!-- get info of quantity 5 -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">local_grocery_store</i>
+                    <label>Ingredients</label>
+                    <input placeholder="Ingredient 6" id="ingredient6" name="ingredient6" type="text">
+                    <!-- get info of ingredient 6 -->
+                </div>
+                <div class="input-field col s4">
+                    <input placeholder="Measure 6" id="measure6" name="measure6" type="text">
+                    <!-- get info of measurement 6 -->
+                </div>
+                <div class="input-field col s2">
+                    <input placeholder="Quantity 6" id="quantity6" name="quantity6" type="number">
+                    <!-- get info of quantity 6 -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">local_grocery_store</i>
+                    <label>Ingredients</label>
+                    <input placeholder="Ingredient 7" id="ingredient7" name="ingredient7" type="text">
+                    <!-- get info of ingredient 7 -->
+                </div>
+
+                <div class="input-field col s4">
+                    <input placeholder="Measure 7" id="measure7" name="measure7" type="text">
+                    <!-- get info of measurement 7 -->
+                </div>
+
+                <div class="input-field col s2">
+                    <input placeholder="Quantity 7" id="quantity7" name="quantity7" type="number">
+                    <!-- get info of quantity 7 -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">local_grocery_store</i>
+                    <label>Ingredients</label>
+                    <input placeholder="Ingredient 8" id="ingredient8" name="ingredient8" type="text">
+                    <!-- get info of ingredient 8 -->
+                </div>
+
+                <div class="input-field col s4">
+                    <input placeholder="Measure 8" id="measure8" name="measure8" type="text">
+                    <!-- get info of measurement 8 -->
+                </div>
+
+                <div class="input-field col s2">
+                    <input placeholder="Quantity 8" id="quantity8" name="quantity8" type="number">
+                    <!-- get info of quantity 8 -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">local_grocery_store</i>
+                    <label>Ingredients</label>
+                    <input placeholder="Ingredient 9" id="ingredient9" name="ingredient9" type="text">
+                    <!-- get info of ingredient 9 -->
+                </div>
+
+                <div class="input-field col s4">
+                    <input placeholder="Measure 9" id="measure9" name="measure9" type="text">
+                    <!-- get info of measurement 9 -->
+                </div>
+                <div class="input-field col s2">
+                    <input placeholder="Quantity 9" id="quantity9" name="quantity9" type="number">
+                    <!-- get info of quantity 9 -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">local_grocery_store</i>
+                    <label>Ingredients</label>
+                    <input placeholder="Ingredient 10" id="ingredient10" name="ingredient10" type="text">
+                    <!-- get info of ingredient 10 -->
+                </div>
+
+                <div class="input-field col s4">
+                    <input placeholder="Measure 10" id="measure10" name="measure10" type="text">
+                    <!-- get info of measurement 10 -->
+                </div>
+                <div class="input-field col s2">
+                    <input placeholder="Quantity 10" id="quantity10" name="quantity10" type="number">
+                    <!-- get info of quantity 10 -->
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">assignment</i>
+                    <label>Method</label>
+                    <input placeholder="Method Step 1" id="method1" name="method1" type="text" required>
+                    <!-- get info of 1st Method Step -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">assignment</i>
+                    <label>Method</label>
+                    <input placeholder="Method Step 2" id="method2" name="method2" type="text" required>
+                    <!-- get info of 2nd Method Step -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">assignment</i>
+                    <label>Method</label>
+                    <input placeholder="Method Step 3" id="method3" name="method3" type="text" required>
+                    <!-- get info of 3rd Method Step -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">assignment</i>
+                    <label>Method</label>
+                    <input placeholder="Method Step 4" id="method4" name="method4" type="text">
+                    <!-- get info of 4th Method Step -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">assignment</i>
+                    <label>Method</label>
+                    <input placeholder="Method Step 5" id="method5" name="method5" type="text">
+                    <!-- get info of 5th Method Step -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">assignment</i>
+                    <label>Method</label>
+                    <input placeholder="Method Step 6" id="method6" name="method6" type="text">
+                    <!-- get info of 6th Method Step -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">assignment</i>
+                    <label>Method</label>
+                    <input placeholder="Method Step 7" id="method7" name="method7" type="text">
+                    <!-- get info of 7th Method Step -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">assignment</i>
+                    <label>Method</label>
+                    <input placeholder="Method Step 8" id="method8" name="method8" type="text">
+                    <!-- get info of 8th Method Step -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">assignment</i>
+                    <label>Method</label>
+                    <input placeholder="Method Step 9" id="method9" name="method9" type="text">
+                    <!-- get info of 9th Method Step -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">assignment</i>
+                    <label>Method</label>
+                    <input placeholder="Method Step 10" id="method10" name="method10" type="text">
+                    <!-- get info of 10th Method Step -->
+                </div>
+                <!-- input field -->
+            </div>
+            <!-- Row -->
+
+            <div class="row">
+
+            </div>
+            <!-- Row -->
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">assistant</i>
+                    <select id="difficulty" name="difficulty" type="text" required>
                     <option value="" disabled selected>Choose Difficulty</option>
                      {% for level in difficulties%}
                      <option value="{{ level.level }}">{{ level.level }}</option>
                      {% endfor %}
                      <!-- get info of difficulty level from dynamic list -->
                 </select>
-                <label>Difficulty Level</label>
+                    <label>Difficulty Level</label>
+                </div>
+                <!-- input-field -->
             </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
+            <!-- Row -->
 
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">email</i>
-                <label>Contributor's Email Address</label>
-                <input placeholder="Contributor's Email Address (format user@domain)" id="contributor" name="contributor" type="email" class="validate" required>
-                <!-- get info of contributores email address -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-
-        <div class="row">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">web</i>
-                <label>Image Web Address</label>
-                <input placeholder="Image URL (format http://)" id="image_url" name="image_url" type="url" class="validate" required>
-                <!-- get url of dish picture -->
-            </div>
-            <!-- input-field -->
-        </div>
-        <!-- Row -->
-
-        <div id="add-recipe-controls" class="left">
             <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">email</i>
+                    <label>Contributor's Email Address</label>
+                    <input placeholder="Contributor's Email Address (format user@domain)" id="contributor" name="contributor" type="email" class="validate" required>
+                    <!-- get info of contributores email address -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">web</i>
+                    <label>Image Web Address</label>
+                    <input placeholder="Image URL (format http://)" id="image_url" name="image_url" type="url" class="validate" required>
+                    <!-- get url of dish picture -->
+                </div>
+                <!-- input-field -->
+            </div>
+            <!-- Row -->
+
+            <div id="add-recipe-controls" class="left">
+                <div class="row">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Add Recipe
                     <i class="material-icons right">playlist_add</i>
                 </button>
-                <a type="button" onclick="window.history.back()" class="waves-effect waves-light btn btn_small purple"><i class="material-icons prefix">exit_to_app</i></a>
+                    <a type="button" onclick="window.history.back()" class="waves-effect waves-light btn btn_small purple"><i class="material-icons prefix">exit_to_app</i></a>
+                </div>
+                <!--Row-->
             </div>
-            <!--Row-->
-        </div>
-        <!--add-recipe-controls-->
-    </form>
+            <!--add-recipe-controls-->
+        </form>
+    </div>
+    <!-- Row -->
 </div>
-<!-- Row -->
+<!--add-recipe-container-->
 
 {% endblock %}

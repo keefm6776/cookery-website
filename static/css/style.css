@@ -84,6 +84,10 @@ html {
 }
 
 .nav ul a {
+    font-size: 0.9rem;
+}
+
+.dropdown-content {
     color: green;
 }
 
@@ -137,4 +141,10 @@ html {
 #website-blurb {
     font-size: 12px;
     background-color: lightgrey;
+}
+
+.add-form {
+    padding: 5px;
+    margin: 5px;
+    background-color: white
 }
