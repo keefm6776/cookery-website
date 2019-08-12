@@ -65,6 +65,9 @@ html {
 
 /***************************************************** Navigation Styling */
 
+nav ul a {color: #26a69a;
+          font-size: 0.8rem;}
+
 .sidenav {
  background-color: grey;
 }
@@ -72,11 +75,6 @@ html {
 .sidenav ul a {
  text-align: right;
  color: white;
-}
-
-nav ul a {
- color: #26a69a;
- size: 10px;
 }
 
 /**************************************************View Recipe Styling */
