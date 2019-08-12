@@ -12,7 +12,6 @@
    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css">
 </head>
 <!-- Navigation based around materializecss navbar -->
-<!-- Navigation based around materializecss navbar -->
 <nav class="black lighten-1" role="navigation">
    <div class="nav-wrapper container">
       <ul id='manage-dropdown' class="dropdown-content right hide-on-med-and-down">
@@ -48,11 +47,11 @@
       <div class="nav-wapper">
          <ul class="right hide-on-med-and-down">
             <li><a href="{{url_for('get_recipes')}}">All Recipes</a></li>
-            <li><a href="{{url_for('add_recipe')}}">Add Recipe</a></li>
+            <li><a href="{{url_for('add_recipe')}}"><i class="material-icons right">add</i>Recipe</a></li>
             <!-- Dropdown Triggers -->
-            <li><a class="dropdown-trigger" href="#!" data-target="filter-cuisine-dropdown">Filter Cuisine<i class="material-icons right">arrow_drop_down</i></a></li>
-            <li><a class="dropdown-trigger" href="#!" data-target="filter-difficulty-dropdown">Filter Difficulty<i class="material-icons right">arrow_drop_down</i></a></li>
-            <li><a class="dropdown-trigger" href="#!" data-target="manage-principle-dropdown">Filter Ingredient<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="filter-cuisine-dropdown"><i class="material-icons right">filter_list</i>Cusine</a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="filter-difficulty-dropdown"><i class="material-icons right">filter_list</i>Difficulty</a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="manage-principle-dropdown"><i class="material-icons right">filter_list</i>Ingredient</a></li>
             <li><a class="dropdown-trigger" href="#!" data-target="manage-dropdown">Manage<i class="material-icons right">arrow_drop_down</i></a></li>
          </ul>
          <ul id="nav-mobile" class="sidenav">
