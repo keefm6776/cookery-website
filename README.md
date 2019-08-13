@@ -163,6 +163,9 @@ In Heroku, I then set the following Config Variables:
 
 I was then able to open the app, using this button in Heroku.
 
+Before the final deployment of this project, I have set the debug variable to false in app.py, during the run command for app.  I have also
+hidden my MONGO_URI using an environment variable of this name, which is used to set this value for the app.
+
 This project has been deployed via Heroku at https://cookery-website-flask-mongo.herokuapp.com/
 
 To run this app locally you need to use the following command : python3 app.py.
