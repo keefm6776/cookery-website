@@ -3,11 +3,15 @@ from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from datetime import datetime
+from boto.s3.connection import S3Connection
 
-MONGODB_URI = os.getenv("MONGO_URI")
+s3 = S3Connection(os.environ['MONGO_URI'])
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'cookbook'
-app.config["MONGO_URI"] = MONGODB_URI
+
+
+
+#app.config["MONGO_URI"] = 'mongodb+srv://root:31Wirpbj6677@cookery-website-xysxa.mongodb.net/cookbook?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
 

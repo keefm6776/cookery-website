@@ -45,6 +45,24 @@ This project has been based on cuisines of the world, that would allow users fro
 cuisines with each other.  Each recipe will be categorised by cuisine, difficulty and principle ingredient.  Each of these
 categories will be predermined from a MongoDB collection, so that they can be filtered on effectively.
 
+## User Stories
+
+Before Starting, I started to create some user stories:
+
+	1.	As a User I want to be able to add my recipes for others to enjoy, and edit them as required.
+	2.	As a User I want to be able to delete any unwanted recipes.
+	3.	As a User I want to be able to view the recipes that are on the site.
+	2.	As a User I want to be able to look for a recipe based on a main ingredient, which I have at my disposal.
+	3.	AS a User I want to be able to look for a recipe based on a cuisine type, which I happen to fancy that day.
+	4.	As a User I want to be able to look for a recipe based on how diffcult it is, to make sure I am able to complete it.
+
+## Database Design
+
+Before starting this project, I researched various Recipe website that are on the web, as mentioned in Credits -> Content,
+Below.  I then set about drawing up a database schema.  Initially I worked on a SQL based project, but realised that this 
+project would work better for the user as a documnet store, in MongoDB.  My initial designs are included in the Database Design
+Directory.
+
 ## UX
 
 As part of the development process I mocked up wireframes of my recipe site before starting:
@@ -112,7 +130,43 @@ Which are located in the Wireframe directory.
 
 ## Git Commits
 
-## Deployment				
+I have made regular Git Commits during my project for version control and also to allow myself to go back if anything went wrong. 
+I have pushed each of these commits to GitHub, so that the progress of my project can be reviewed.  I folowed the steps provided by
+the GitHub site, which were:
+
+				1.	I set up a page in AWS Cloud 9
+				2.	In the terminal I typed "git init", to initialise the repository
+				3.	I then created a requirements.txt file using the command: sudo pip3 freeze --local > requirements.txt
+				4.  I then created my Procfile by the command: echo web : python app.py > Procfile
+				3.	To add files to be committed, I typed "git add ."
+				4.  To check that these files were staged, I typed "git status" (staged files should be in green font)
+				5.	To commit these to git, the command "git commit -m "messsage"", was used.  With a meaningful message about the commit inside the "".
+				6.	To link the my github account, I used the following: git remote add origin https://github.com/keefm6776/cookery-website.git
+				7.	To push each commit to github I used : git push -u origin master
+				8.	For each subsequent commit I repeated steps 3, 4, 5 & 7.
+
+## Deployment			
+
+I used Heroku to deploy this project by following the steps provided in the CodeInstitute course.  To initialise heroku, these were:
+
+				1.	Create an app in heroku, which has an unique name. In my case cookery-website-flask-mongo
+				2.	Next login to heroku through the CLI, using the 'heroku login' and entering your heroku credentials.
+				3.  To link heroku to the git repository I used the following: 'heroku git:remote -a cookery-website-flask-mongo
+				4.	I then sent the command to get it up and running : heroku ps:scale web=1
+				
+After each push to git, step 7, I then used the following command to push to Heroku: git push heroku master
+
+In Heroku, I then set the following Config Variables:
+
+				1.	PORT = 5000
+				2	IP   = 0.0.0.0
+
+I was then able to open the app, using this button in Heroku.
+
+This project has been deployed via Heroku at https://cookery-website-flask-mongo.herokuapp.com/
+
+To run this app locally you need to use the following command : python3 app.py.
+
 
 ## Testing
 
@@ -177,7 +231,7 @@ Resolved Issues:
 			    	 be prompted that this is the issue, so might be a bit confusing if all the other fields are filled in correctly.  (Bearing in mind that the
 			    	 normal fields will prompt the user to fill them out if they are blank or incorrect)
 			    	 
-			    2.	 Eaually as above, Edit would allow the user to remove the data from a document and resubmit it as empty, I emply the same required tags here.
+			    2.	 Eaually as above, Edit would allow the user to remove the data from a document and resubmit it as empty, I employed the same required tags here.
 			    	 
 			    3.	 I found that adding the dynamically filled Filter by options into the menus meant that the display of the cuisines, difficulty levels and
 			    	 principle ingredients would not work.  In fact only the main menu would show the dynamic list and it wouldn't display in the mobile menu.
@@ -186,15 +240,19 @@ Resolved Issues:
 			    	 and I made each dictionary into a list using the list(dict) command, this meant that each list could be iterated over as many times as 
 			    	 required and hence solved this problem.
 			    
-			    4.	 I fouond that the font for the hero-image text was too large on small screens along with the font used for the name of each section, like 
+			    4.	 I found that the font for the hero-image text was too large on small screens along with the font used for the name of each section, like 
 			    	 "Filtered By Cuisine".  This has been rectified and now renders properly.
 			    
-			    5.	 I found a major oversight n my part, I failed to include the add recipe link in the mobile menu, which would have meant that the site was 
+			    5.	 I found a major oversight on my part, I failed to include the add recipe link in the mobile menu, which would have meant that the site was 
 			         pretty useless for mobile and small screen users!!!  Thankfully testing found this issue and it was a quick fix.
 			    
 			    6.	 I found that user experience was hindered by not having an exit, add or edit button whilst viewing the recipe.  While I did read that it is 
 			    	 acceptable for the exit issue to be solved by the user using the browswer back button, I felt frustrated with the lack of being able to exit
 			    	 this page without having to work that out.  Hence I have included these at the bottom of the form.
+			    
+			    6.a. I later found that these exit buttons were rendering shorter than the other buttons while displayed on mobile screens, however this did not show
+			    	 whilst viewing in the IDE.  I later realised that I had not been consistent in the declaration of these buttons, declaring some as buttons and 
+			    	 some as links.  I made these consistent which resolved this issue.
 			    
 			    7.	 As above I found that each edit page ie Recipe, Cusines, Difficulty Levels and Principle Ingredients were hindered by not having an exit option
 			    	 which allowed the user to discard changes.  I have included this exit button at the bottom at each of the edit forms.
@@ -202,56 +260,34 @@ Resolved Issues:
 			    8.	 I also found that the manage Principle Ingredients Screen did not display the name of the card in the display screen.  I found that I had referenced
 			         the information incorrectly and was able to correct this.
 			    
-			    9.	 During testing I found that the Manage Lists option was missing from a tablet in landscape.  In portrait the user is presente with the mobile menu,
-			         but in landscape this option disappears from the main menu. *****************************
+			    9.	 During testing I found that the Manage Lists option was missing from a tablet in landscape.  In portrait the user is presented with the mobile menu,
+			         but in landscape this option disappears from the main menu.  I have altered the font size and removed some of the wording within the main nav bar so 
+			         that all the required menu items are visible on this type of screen.
 			         
-Unresolved Issues:
-		
-				
+			    10.	 Also during testing, I found that the filter by cuisine listing was rendered in white font which meant that they were not visble against the white 
+			    	 background.  I made this consistent by changing the font colour to be consistent with the rest of the menu lists.
+			    
 Code Validation:
 
 				1.  I have checked my HTML with validator.w3.org, and almost had a full validation.  However an error still remains of:
 				    "Error: Start tag body seen but an element of the same type was already open.  From line 68, column 1; to line 68, column 6"
 				    I am unable to establish why this error is being shown.
+				1a.	The other errors are in relation to the jinja templating and extending of base.html.  The jinja templating was not recognised, and the extends keyword
+					meant that the html file didn't have its full structure hence the error.  These errors still remain in the validation tool, however the site renders 
+					correctly in regards to these issues.
 				2.	I have checked my CSS file with jigsaw.w3.org, and this found no errors in the CSS.
-				3.	I In the absence of what I would consider an official javascript validator, I have checked both my javascript files with 
-				    http://esprima.org/demo/validate.html, which indicated that both were syntatically valid.
 				
-
-## Deployment
-
-I have made regular Git Commits during my project for version control and also to allow myself to go back if anything went wrong. 
-I have pushed each of these commits to GitHub, so that the progress of my project can be reviewed.  I folowed the steps provided by
-the GitHub site, which were:
-
-				1.	I aet up a page in AWS Cloud 9
-				2.	In the terminal I typed "git init", to initialise the repository
-				3.	To add files to be committed, I typed "git add ."
-				4.  To check that these files were staged, I typed "git status" (stage files should be in green font)
-				5.	To commit these to git, the command "git commit -m "messsage"", was used.  With a meaningful message about the commit inside the "".
-				6.	To link the my github account, I used the following: git remote add origin https://github.com/keefm6776/cookery-website.git
-				7.	To push each commit to github I used : git push -u origin master
-				8.	For each subsequent commit I repeated steps 3, 4, 5 & 7.
-				
-
-I used Heroku to deploy this  project by following the steps provided in the CodeInstitute course.  These were:
-
-				1.
-				2.
-				3.
-				
-
-This project has been deployed via Heroku at https://cookery-website-flask-mongo.herokuapp.com/
-
 
 ## Credits
 
 ### Content
 				- Before starting this project I looked at various sites recipe based sites, to get a flavour of what is required, these included:
 					1.	https://www.bbcgoodfood.com
-					2.
-					3.
-					4.
+					2.  https://allrecipes.com
+					3.  https://www.delish.com
+					4.  https://greatfood.ie
+				
+				- I obtained the sample recipes for my site from https://www.bbcgoodfood.com.
 					
 
 ### Acknowledgements
@@ -263,4 +299,3 @@ This project has been deployed via Heroku at https://cookery-website-flask-mongo
                 - My Mentor Theo Despoudis - for his general guidance.
                 - The CI Tutor Team. (However a special mention for Haley Schafer for her repeated help with different issues.  Each
                   Time she guided me through what I was struggling to do, and kept at it until we got there).
-                - 
