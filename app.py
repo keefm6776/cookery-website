@@ -4,10 +4,9 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from datetime import datetime
 
-MONGODB_URI = os.getenv("MONGO_SAVED_URI")
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'cookbook'
-app.config["MONGO_URI"] = MONGODB_URI
+app.config["MONGO_URI"] = os.environ.get('MONGO_SAVED_URI')
 
 mongo = PyMongo(app)
 
