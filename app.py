@@ -6,7 +6,6 @@ from datetime import datetime
 
 app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'cookbook'
-app.config["MONGO_URI"] = 'mongodb+srv://root:31Wirpbj6677@cookery-website-xysxa.mongodb.net/cookbook?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
 
