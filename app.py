@@ -301,4 +301,8 @@ def get_difficulty_filtered_recipes(difficulty_filter):
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
+<<<<<<< HEAD
             debug=False)
+=======
+            debug=True)
+>>>>>>> 2295e3afbe26b2a252a7f0602ee0eaa6d06f18f3
